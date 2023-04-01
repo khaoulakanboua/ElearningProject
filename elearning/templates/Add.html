@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Add New Student{% endblock title %}
+
+{% block content %}
+<div class="col-md-12">
+    <form method="POST" class="post-form" action="/addnew">
+    {% csrf_token %}
+    <div class="container">
+        <div class="col-12">
+        <h3>Entrer les details</h3>
+        </div>
+
+        <div class="mb-3">
+            <label>Nom:</label>
+            {{ form.nom }}
+        </div>
+        <div class="mb-3">
+            <label>Prenom:</label>
+            {{ form.prenom }}
+        </div>
+        <div class="mb-3">
+            <label>Email:</label>
+            {{ form.email }}
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+    </form>
+</div>
+{% endblock content %}

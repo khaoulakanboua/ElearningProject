@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for inscri in inscris %}
+    <p>{{ inscri.cour.nom }}</p>
+    <p>{{ inscri.etudiant.nom }}</p>
+
+{% endfor %}
+</body>
+</html>
