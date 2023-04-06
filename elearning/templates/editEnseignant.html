@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Modifier un Enseignant{% endblock title %}
+
+{% block content %}
+<div class="col-md-12">
+    <form method="POST" class="post-form" action="/updateEnseignant/{{enseignant.id}}">
+    {% csrf_token %}
+    <div class="container">
+        <div class="col-12">
+            <h3>Update Details</h3>
+        </div>
+        <div class="mb-3">
+            <label>Enseignant ID:</label>
+            <input type="text" class="form-control" name="id" id="id_id" required maxlength="20" value="{{ enseignant.id }}"/>
+        </div>
+        <div class="mb-3">
+            <label>Nom:</label>
+            <input type="text" class="form-control" name="nom" id="id_nom" required maxlength="100" value="{{ enseignant.nom }}" />
+        </div>
+        <div class="mb-3">
+            <label>Prenom:</label>
+            <input type="text" class="form-control" name="prenom" id="id_prenom" required maxlength="254" value="{{ enseignant.prenom }}" />
+        </div>
+        <div class="mb-3">
+            <label>Email:</label>
+            <input type="email" class="form-control" name="email" id="id_email" required maxlength="15" value="{{ enseignant.email }}" />
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-success btn-lg">Update</button>
+        </div>
+    </div>
+    </form>
+{% endblock content %}

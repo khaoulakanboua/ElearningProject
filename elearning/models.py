@@ -4,7 +4,7 @@ from django.db import models
 from django.db import models
 
 class Etudiant(models.Model):
-    #id_coun=models.IntegerField()
+
     nom = models.CharField(max_length=100)
     prenom = models.CharField(max_length=100)
     email = models.EmailField()

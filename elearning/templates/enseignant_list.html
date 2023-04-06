@@ -1,13 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-{% for enseignant in enseignants %}
-<h2>{{ enseignant.nom }}</h2>
-<p>{{ enseignant.prenom }}</p>
-{% endfor %}
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Liste des Enseignants{% endblock title %}
+
+{% block content %}
+ <div class="col-md-12">
+        <span><a href="/addnewenseignant" class="btn btn-primary">Ajouter nouveau enseignant</a></span>
+        <div class="table-responsive">
+        <table id="bootstrapdatatable" class="table table-striped table-bordered" width="100%">
+        <thead>
+            <th><input type="checkbox" id="checkall" /></th>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Email</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+        {% for enseignant in enseignants %}
+            <tr>
+            <td><input type="checkbox" class="checkthis" /></td>
+            <td>{{ enseignant.id }}</td>
+            <td>{{ enseignant.nom }}</td>
+            <td>{{ enseignant.prenom }}</td>
+            <td>{{ enseignant.email }}</td>
+            <td><a href="/editEnseignant/{{ enseignant.id }}" class="btn btn-primary">Modifier</a></td>
+            <td><a href="/deleteEnseignant/{{ enseignant.id }}" class="btn btn-danger">Supprimer</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+        </div>
+    </div>
+{% endblock content %}
