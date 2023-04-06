@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from elearning.forms import EtudiantForm, EnseignantForm
+from elearning.forms import EtudiantForm, EnseignantForm, CourForm
 
 # Create your views here.
 from .models import Etudiant,Enseignant,Cour,Inscri
@@ -77,3 +77,16 @@ def deleteEnseignant(request, id):
     enseignant = Enseignant.objects.get(id=id)
     enseignant.delete()
     return redirect("/enseignant")
+
+def addnewCour(request):
+    if request.method == "POST":
+        form = CourForm(request.POST)
+        if form.is_valid():
+            try:
+                form.save()
+                return redirect('cour/')
+            except:
+                pass
+    else:
+        form = CourForm()
+    return render(request,'addCour.html',{'form':form})
