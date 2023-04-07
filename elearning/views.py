@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from elearning.forms import EtudiantForm, EnseignantForm, CourForm
+from elearning.forms import EtudiantForm, EnseignantForm, CourForm,InscriForm
 
 # Create your views here.
 from .models import Etudiant,Enseignant,Cour,Inscri
@@ -16,8 +16,8 @@ def cour_list(request):
     return render(request, 'cour_list.html', {'cours': cours})
 
 def inscri_list(request):
-    inscris = Inscri.objects.all()
-    return render(request, 'inscri_list.html', {'inscris': inscris})
+    inscriptions = Inscri.objects.all()
+    return render(request, 'inscri_list.html', {'inscriptions': inscriptions})
 
 def addnewEtudiant(request):
     if request.method == "POST":
@@ -90,3 +90,32 @@ def addnewCour(request):
     else:
         form = CourForm()
     return render(request,'addCour.html',{'form':form})
+
+def addnewInscri(request):
+    if request.method == "POST":
+        form = InscriForm(request.POST)
+        if form.is_valid():
+            try:
+                form.save()
+                return redirect('inscription/')
+            except:
+                pass
+    else:
+        form = InscriForm()
+    return render(request,'addInscri.html',{'form':form})
+
+def editInscri(request, id):
+    inscription = Inscri.objects.get(id=id)
+    return render(request,'editInscri.html', {'inscription':inscription})
+
+def updateInscri(request, id):
+    inscription = Inscri.objects.get(id=id)
+    form = InscriFormForm(request.POST, instance = inscription)
+    if form.is_valid():
+        form.save()
+        return redirect("/inscription")
+    return render(request, 'editInscri.html', {'inscription': inscription})
+def deleteInscri(request, id):
+    inscription = Inscri.objects.get(id=id)
+    inscription.delete()
+    return redirect("/inscription")

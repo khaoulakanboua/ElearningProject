@@ -1,5 +1,5 @@
 from django import forms
-from elearning.models import Etudiant, Enseignant, Cour
+from elearning.models import Etudiant, Enseignant, Cour,Inscri
 
 
 class EtudiantForm(forms.ModelForm):
@@ -29,3 +29,11 @@ class CourForm(forms.ModelForm):
         widgets = { 'nom': forms.TextInput(attrs={ 'class': 'form-control' }),
             'code': forms.TextInput(attrs={ 'class': 'form-control' })
                     }
+
+class InscriForm(forms.ModelForm):
+
+        Cour: forms.ModelChoiceField(queryset=Cour.objects.all())
+        Etudiant: forms.ModelChoiceField(queryset=Etudiant.objects.all())
+        class Meta:
+         model = Inscri
+         fields = ['cour', 'etudiant']

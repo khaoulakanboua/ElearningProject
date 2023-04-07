@@ -8,7 +8,7 @@ urlpatterns = [
     path('etudiant/', etudiant_list, name='etudiant_list'),
     path('enseignant/', enseignant_list, name='enseignant_list'),
     path('cour/', cour_list, name='cour_list'),
-    path('', inscri_list, name='inscri_list'),
+    path('inscription/', inscri_list, name='inscri_list'),
     path('add/', addnewEtudiant, name='addnewEtudiant'),
     path("addnew", views.addnewEtudiant, name="addnew"),
     path("editEtudiant/<int:id>", edit, name="edit"),
@@ -19,5 +19,10 @@ urlpatterns = [
     path("updateEnseignant/<int:id>", updateEnseignant, name="updateEnseignant"),
     path("deleteEnseignant/<int:id>", views.deleteEnseignant, name="deleteEnseignant"),
     path('addCour', addnewCour, name='addnewCour'),
+    path("addnewinscri", views.addnewInscri, name="addnewInscri"),
+    path("editInscri/<int:id>", views.editInscri, name="editInscri"),
+    path("updateInscri/<int:id>", views.updateInscri, name="updateInscri"),
+    path("deleteInscri/<int:id>", views.deleteInscri, name="deleteInscri"),
+
 
 ]
