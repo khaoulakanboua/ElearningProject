@@ -91,6 +91,23 @@ def addnewCour(request):
         form = CourForm()
     return render(request,'addCour.html',{'form':form})
 
+
+
+def editCour(request, id):
+    cour =Cour.objects.get(id=id)
+    return render(request,'editCour.html', {'cour':cour})
+
+def updateCour(request, id):
+    cour = Cour.objects.get(id=id)
+    form = CourForm(request.POST, instance = cour)
+    if form.is_valid():
+        form.save()
+        return redirect("/cour")
+    return render(request, 'editCour.html', {'cour': cour})
+def deleteCour(request, id):
+    cour = Cour.objects.get(id=id)
+    cour.delete()
+    return redirect("/cour")
 def addnewInscri(request):
     if request.method == "POST":
         form = InscriForm(request.POST)
@@ -110,7 +127,7 @@ def editInscri(request, id):
 
 def updateInscri(request, id):
     inscription = Inscri.objects.get(id=id)
-    form = InscriFormForm(request.POST, instance = inscription)
+    form = InscriForm(request.POST, instance = inscription)
     if form.is_valid():
         form.save()
         return redirect("/inscription")
