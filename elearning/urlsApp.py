@@ -1,7 +1,8 @@
 from django.urls import path
 
 from . import views
-from .views import etudiant_list, enseignant_list, cour_list, inscri_list, addnewEtudiant,update,edit,addnewEnseignant,editEnseignant,updateEnseignant,deleteEnseignant,addnewCour
+from .views import etudiant_list, enseignant_list, cour_list, inscri_list, addnewEtudiant, update, edit, \
+    addnewEnseignant, editEnseignant, updateEnseignant, deleteEnseignant, addnewCour, editCour, updateCour
 
 urlpatterns = [
     #path('products/', product_list, name='product_list'),
@@ -19,5 +20,8 @@ urlpatterns = [
     path("updateEnseignant/<int:id>", updateEnseignant, name="updateEnseignant"),
     path("deleteEnseignant/<int:id>", views.deleteEnseignant, name="deleteEnseignant"),
     path('addCour', addnewCour, name='addnewCour'),
+    path("editCour/<int:id>", editCour, name="editCour"),
+    path("updateCour/<int:id>", updateCour, name="updateCour"),
+    path("deleteCour/<int:id>", views.deleteCour, name="deleteCour"),
 
 ]

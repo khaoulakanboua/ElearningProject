@@ -90,3 +90,21 @@ def addnewCour(request):
     else:
         form = CourForm()
     return render(request,'addCour.html',{'form':form})
+
+
+def editCour(request, id):
+    cour = Cour.objects.get(id=id)
+    return render(request,'editCour.html', {'cour':cour})
+
+def updateCour(request, id):
+    cour = Cour.objects.get(id=id)
+    form = CourForm(request.POST, instance = cour)
+    if form.is_valid():
+        form.save()
+        return redirect("/cour")
+    return render(request, 'editCour.html', {'cour': cour})
+
+def deleteCour(request, id):
+    cour = Cour.objects.get(id=id)
+    cour.delete()
+    return redirect("/cour")
