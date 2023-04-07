@@ -24,8 +24,8 @@
             <td>{{ cour.nom }}</td>
             <td>{{ cour.code }}</td>
             <td>{{ cour.enseignant.nom }}</td>
-            <td><a href="/{{ cour.id }}" class="btn btn-primary">Modifier</a></td>
-            <td><a href="/{{ cour.id }}" class="btn btn-danger">Supprimer</a></td>
+            <td><a href="/editCour/{{ cour.id }}" class="btn btn-primary">Modifier</a></td>
+            <td><a href="/deleteCour/{{ cour.id }}" class="btn btn-danger">Supprimer</a></td>
             </tr>
         {% endfor %}
         </tbody>
