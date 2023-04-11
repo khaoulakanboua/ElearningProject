@@ -25,6 +25,7 @@
         <div class="mb-3">
             <label>Enseignant:</label>
             <select id="id_enseignant" name="enseignant">
+            <option value="{{cour.enseignant.id}}">{{ cour.enseignant.nom }}</option>
                 {% for enseignant in enseignants %}
 
                  <option value="{{cour.enseignant.id}}">{{ cour.enseignant.nom }}</option>
