@@ -1,11 +1,20 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
 from elearning.forms import EtudiantForm, EnseignantForm, CourForm,InscriForm
 
 # Create your views here.
 from .models import Etudiant,Enseignant,Cour,Inscri
-def etudiant_list(request):
-    etudiants = Etudiant.objects.all()
-    return render(request, 'etudiant_list.html', {'etudiants': etudiants})
+
+
+class EtudiantView:
+    def etudiant_list(request):
+        etudiants = Etudiant.objects.all()
+        return render(request, 'etudiant_list.html', {'etudiants': etudiants})
+
+
+
+def home(request):
+    return render(request, 'index.html')
 
 def enseignant_list(request):
     enseignants = Enseignant.objects.all()
@@ -94,12 +103,12 @@ def addnewCour(request):
 
 
 def editCour(request, id):
-    cour =Cour.objects.get(id=id)
+    cour = Cour.objects.get(id=id)
     return render(request,'editCour.html', {'cour':cour})
 
 def updateCour(request, id):
     cour = Cour.objects.get(id=id)
-    form = CourForm(request.POST, instance = cour)
+    form = CourForm(request.POST)
     if form.is_valid():
         form.save()
         return redirect("/cour")
