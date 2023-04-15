@@ -5,19 +5,21 @@ from elearning.models import Etudiant, Enseignant, Cour,Inscri
 class EtudiantForm(forms.ModelForm):
     class Meta:
         model = Etudiant
-        fields = ['nom', 'prenom', 'email']
+        fields = ['nom', 'prenom', 'email','cne']
         widgets = { 'nom': forms.TextInput(attrs={ 'class': 'form-control' }),
             'prenom': forms.TextInput(attrs={ 'class': 'form-control' }),
             'email': forms.EmailInput(attrs={ 'class': 'form-control' }),
+            'cne': forms.TextInput(attrs={'class': 'form-control'}),
                     }
 
 class EnseignantForm(forms.ModelForm):
     class Meta:
         model = Enseignant
-        fields = ['nom', 'prenom', 'email']
+        fields = ['nom', 'prenom', 'email','cni']
         widgets = { 'nom': forms.TextInput(attrs={ 'class': 'form-control' }),
             'prenom': forms.TextInput(attrs={ 'class': 'form-control' }),
             'email': forms.EmailInput(attrs={ 'class': 'form-control' }),
+            'cni': forms.TextInput(attrs={'class': 'form-control'}),
                     }
 
 class CourForm(forms.ModelForm):
