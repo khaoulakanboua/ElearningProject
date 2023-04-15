@@ -1,13 +1,13 @@
 from django.urls import path
-
 from . import views
-from .views import etudiant_list, enseignant_list, cour_list, inscri_list, addnewEtudiant,update,edit,addnewEnseignant,editEnseignant,updateEnseignant,deleteEnseignant,addnewCour
+from .views import  enseignant_list, cour_list, inscri_list, addnewEtudiant,update,edit,addnewEnseignant,editEnseignant,updateEnseignant,deleteEnseignant,addnewCour,home
 
 urlpatterns = [
     #path('products/', product_list, name='product_list'),
-    path('etudiant/', etudiant_list, name='etudiant_list'),
+    path('etudiant/', views.EtudiantView.etudiant_list, name='etudiant_list'),
     path('enseignant/', enseignant_list, name='enseignant_list'),
     path('cour/', cour_list, name='cour_list'),
+    path('home/',home,name='home'),
     path('inscription/', inscri_list, name='inscri_list'),
     path('add/', addnewEtudiant, name='addnewEtudiant'),
     path("addnew", views.addnewEtudiant, name="addnew"),
