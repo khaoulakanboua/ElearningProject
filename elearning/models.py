@@ -12,29 +12,26 @@ class Formation(models.Model):
 class Enseignant(models.Model):
     nom = models.CharField(max_length=100)
     prenom = models.CharField(max_length=100)
-    cne = models.CharField(max_length=100)
-    
+    cni = models.CharField(max_length=100)
     email = models.EmailField()
+
 
     def __str__(self):
         return self.nom
 
 class Group(models.Model):
     nom = models.CharField(max_length=100)
-    nbrEtudiant = models.CharField(max_length=100)
-
-
+    nbrEtudiant = models.IntegerField()
     def __str__(self):
         return self.nom
 
 class Module(models.Model):
     nom = models.CharField(max_length=100)
     formation = models.ForeignKey(Formation, on_delete=models.CASCADE)
+    enseignant = models.ForeignKey(Enseignant, on_delete=models.CASCADE)
+
     def __str__(self):
         return self.nom
-
-
-
 
 class Cour(models.Model):
     nom = models.CharField(max_length=100)
@@ -45,13 +42,12 @@ class Cour(models.Model):
         return self.nom
 
 
-
 class Etudiant(models.Model):
 
     nom = models.CharField(max_length=100)
     prenom = models.CharField(max_length=100)
     email = models.EmailField()
-    cni = models.CharField(max_length=100)
+    cne = models.CharField(max_length=100)
     formation = models.ForeignKey(Formation, on_delete=models.CASCADE)
     group = models.ForeignKey(Group, on_delete=models.CASCADE)
 
