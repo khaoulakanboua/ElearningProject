@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
-{% block title %}Add New Student{% endblock title %}
+{% block title %}Add New Group{% endblock title %}
 
 {% block content %}
 <div class="col-md-12">
-    <form method="POST" class="post-form" action="/addnewetudiant">
+    <form method="POST" class="post-form" action="/addnewgroup">
     {% csrf_token %}
     <div class="container">
         <div class="col-12">
@@ -16,17 +16,10 @@
             {{ form.nom }}
         </div>
         <div class="mb-3">
-            <label>Prenom:</label>
-            {{ form.prenom }}
+            <label>Nbr Etudiants:</label>
+            {{ form.nbrEtudiant }}
         </div>
-        <div class="mb-3">
-            <label>Email:</label>
-            {{ form.email }}
-        </div>
-         <div class="mb-3">
-            <label>CNE:</label>
-            {{ form.cne }}
-        </div>
+
         <div class="mb-3">
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>
