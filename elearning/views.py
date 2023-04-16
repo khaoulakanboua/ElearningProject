@@ -54,7 +54,7 @@ class EnseignantView:
                 except:
                     pass
         else:
-            form = EtudiantForm()
+            form = EnseignantForm()
         return render(request, 'addEnseignant.html', {'form': form})
 
     def editEnseignant(request, id):

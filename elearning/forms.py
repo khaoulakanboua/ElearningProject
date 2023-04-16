@@ -25,7 +25,7 @@ class EnseignantForm(forms.ModelForm):
             'nom': forms.TextInput(attrs={ 'class': 'form-control' }),
             'prenom': forms.TextInput(attrs={ 'class': 'form-control' }),
             'email': forms.EmailInput(attrs={ 'class': 'form-control' }),
-            'cni': forms.TextInput(attrs={'class': 'form-control'}),
+            'cni': forms.TextInput(attrs={'class': 'form-control'})
                     }
 
 class CourForm(forms.ModelForm):
