@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Add New Module{% endblock title %}
+
+{% block content %}
+<div class="col-md-12">
+    <form method="POST" class="post-form" action="/addnewmodule">
+    {% csrf_token %}
+    <div class="container">
+        <div class="col-12">
+        <h3>Entrer les details</h3>
+        </div>
+
+        <div class="mb-3">
+            <label>Nom:</label>
+            {{ form.nom }}
+        </div>
+
+        <div class="mb-3">
+            <label>Formation:</label>
+            {{ form.formation }}
+        </div>
+        <div class="mb-3">
+            <label>Enseignant:</label>
+            {{ form.enseignant }}
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+    </form>
+</div>
+{% endblock content %}

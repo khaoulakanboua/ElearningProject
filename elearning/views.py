@@ -1,9 +1,9 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
-from elearning.forms import EtudiantForm, EnseignantForm,InscriForm, CourForm,FormationForm,GroupForm
+from elearning.forms import EtudiantForm, EnseignantForm,InscriForm, CourForm,FormationForm,GroupForm,ModuleForm
 
 # Create your views here.
-from .models import Etudiant,Enseignant,Cour,Inscri,Formation,Group
+from .models import Etudiant,Enseignant,Cour,Inscri,Formation,Group,Module
 
 #=========================================View Etudiant=================================================================
 class EtudiantView:
@@ -176,6 +176,32 @@ class GroupView:
             group = Group.objects.get(id=id)
             group.delete()
             return redirect("/group")
+
+#=========================================View Module=================================================================
+class ModuleView:
+    def module_list(request):
+        modules = Module.objects.all()
+        return render(request, 'module_list.html', {'modules': modules})
+    def addnewModule(request):
+        if request.method == "POST":
+            form = ModuleForm(request.POST)
+            if form.is_valid():
+                try:
+                    form.save()
+                    return redirect('module/')
+                except:
+                    pass
+        else:
+            form =ModuleForm()
+        return render(request, 'addModule.html', {'form': form})
+
+    def deleteModule(request, id):
+        module = Module.objects.get(id=id)
+        module.delete()
+        return redirect("/module")
+
+
+
 
 
 def home(request):

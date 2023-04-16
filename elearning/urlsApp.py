@@ -29,6 +29,10 @@ urlpatterns = [
     path("editGroup/<int:id>", views.GroupView.editGroup, name="editGroup"),
     path("updateGroup/<int:id>", views.GroupView.updateGroup, name="updateGroup"),
     path("deleteGroup/<int:id>", views.GroupView.deleteGroup, name="deleteGroup"),
+    # =====================================================================================
+    path('module/', views.ModuleView.module_list, name='module_list'),
+    path("addnewmodule", views.ModuleView.addnewModule, name="addnewmodule"),
+    path("deleteModule/<int:id>", views.ModuleView.deleteModule, name="deleteModule"),
 
     #=====================================================================================
     #path('cour/', views.CoursView.cour_list, name='cour_list'),
