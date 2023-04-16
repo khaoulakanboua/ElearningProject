@@ -1,9 +1,9 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
-from elearning.forms import EtudiantForm, EnseignantForm,InscriForm, CourForm
+from elearning.forms import EtudiantForm, EnseignantForm,InscriForm, CourForm,FormationForm,GroupForm
 
 # Create your views here.
-from .models import Etudiant,Enseignant,Cour,Inscri
+from .models import Etudiant,Enseignant,Cour,Inscri,Formation,Group
 
 #=========================================View Etudiant=================================================================
 class EtudiantView:
@@ -105,6 +105,77 @@ class CoursView:
         cour.delete()
         return redirect("/cour")
 #=========================================View Module=================================================================
+
+#=========================================View Formation=================================================================
+class FormationView:
+    def formation_list(request):
+        formations = Formation.objects.all()
+        return render(request, 'formationList.html', {'formations': formations})
+    def addnewFormation(request):
+        if request.method == "POST":
+            form = FormationForm(request.POST)
+            if form.is_valid():
+                try:
+                    form.save()
+                    return redirect('formation/')
+                except:
+                    pass
+        else:
+            form = FormationForm()
+        return render(request, 'addFormation.html', {'form': form})
+
+    def editFormation(request, id):
+        formation = Formation.objects.get(id=id)
+        return render(request, 'editFormation.html', {'formation': formation})
+
+    def updateFormation(request, id):
+        formation = Formation.objects.get(id=id)
+        form = FormationForm(request.POST, instance=formation)
+        if form.is_valid():
+            form.save()
+            return redirect("/formation")
+        return render(request, 'editFormation.html', {'formation': formation})
+
+    def deleteFormation(request, id):
+        formation = Formation.objects.get(id=id)
+        formation.delete()
+        return redirect("/formation")
+
+#========================================View Group==========================================================================
+class GroupView:
+        def group_list(request):
+            groups = Group.objects.all()
+            return render(request, 'groupList.html', {'groups': groups})
+
+        def addnewGroup(request):
+            if request.method == "POST":
+                form =GroupForm(request.POST)
+                if form.is_valid():
+                    try:
+                        form.save()
+                        return redirect('group/')
+                    except:
+                        pass
+            else:
+                form =GroupForm()
+            return render(request, 'addGroup.html', {'form': form})
+
+        def editGroup(request, id):
+            group = Group.objects.get(id=id)
+            return render(request, 'editGroup.html', {'group': group})
+
+        def updateGroup(request, id):
+            group = Group.objects.get(id=id)
+            form = GroupForm(request.POST, instance=group)
+            if form.is_valid():
+                form.save()
+                return redirect("/group")
+            return render(request, 'ediGroup.html', {'group': group})
+
+        def deleteGroup(request, id):
+            group = Group.objects.get(id=id)
+            group.delete()
+            return redirect("/group")
 
 
 def home(request):

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Liste des Enseignants{% endblock title %}
+
+{% block content %}
+ <div class="col-md-12">
+        <span><a href="/addnewformation" class="btn btn-primary">Ajouter nouveau formation</a></span>
+        <div class="table-responsive">
+        <table id="bootstrapdatatable" class="table table-striped table-bordered" width="100%">
+        <thead>
+            <th><input type="checkbox" id="checkall" /></th>
+            <th>ID</th>
+            <th>Nom</th>
+
+            <th>Edit</th>
+            <th>Delete</th>
+        </thead>
+        <tbody>
+        {% for formation in formations %}
+            <tr>
+            <td><input type="checkbox" class="checkthis" /></td>
+            <td>{{ formation.id }}</td>
+            <td>{{ formation.nom }}</td>
+
+            <td><a href="/editFormation/{{ formation.id }}" class="btn btn-primary">Modifier</a></td>
+            <td><a href="/deleteFormation/{{ formation.id }}" class="btn btn-danger">Supprimer</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+        </div>
+    </div>
+{% endblock content %}

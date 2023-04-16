@@ -17,6 +17,19 @@ urlpatterns = [
     path("editEnseignant/<int:id>", views.EnseignantView.editEnseignant, name="editEnseignant"),
     path("updateEnseignant/<int:id>", views.EnseignantView.updateEnseignant, name="updateEnseignant"),
     path("deleteEnseignant/<int:id>", views.EnseignantView.deleteEnseignant, name="deleteEnseignant"),
+    # =====================================================================================
+    path('formation/', views.FormationView.formation_list, name='formation_list'),
+    path("addnewformation", views.FormationView.addnewFormation, name="addnewFormation"),
+    path("editFormation/<int:id>", views.FormationView.editFormation, name="addnewFormation"),
+    path("updateFormation/<int:id>", views.FormationView.updateFormation, name="updateFormation"),
+    path("deleteFormation/<int:id>", views.FormationView.deleteFormation, name="deleteFormation"),
+    # =====================================================================================
+    path('group/', views.GroupView.group_list, name='group_list'),
+    path("addnewgroup", views.GroupView.addnewGroup, name="addnewGroup"),
+    path("editGroup/<int:id>", views.GroupView.editGroup, name="editGroup"),
+    path("updateGroup/<int:id>", views.GroupView.updateGroup, name="updateGroup"),
+    path("deleteGroup/<int:id>", views.GroupView.deleteGroup, name="deleteGroup"),
+
     #=====================================================================================
     #path('cour/', views.CoursView.cour_list, name='cour_list'),
     #path('addCour', addnewCour, name='addnewCour'),
