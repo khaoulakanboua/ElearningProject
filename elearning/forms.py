@@ -5,10 +5,11 @@ from elearning.models import Etudiant, Enseignant, Cour,Inscri,Module, Formation
 class EtudiantForm(forms.ModelForm):
 
     group: forms.ModelChoiceField(queryset=Group.objects.all())
+    formation: forms.ModelChoiceField(queryset=Formation.objects.all())
 
     class Meta:
         model = Etudiant
-        fields = ['nom', 'prenom', 'email','cne','group']
+        fields = ['nom', 'prenom', 'email','cne','group','formation']
         widgets = {
             'nom': forms.TextInput(attrs={ 'class': 'form-control' }),
             'prenom': forms.TextInput(attrs={ 'class': 'form-control' }),

@@ -13,6 +13,8 @@
             <th>Nom</th>
             <th>Prenom</th>
             <th>Email</th>
+            <th>Groupe</th>
+            <th>Formation</th>
             <th>Edit</th>
             <th>Delete</th>
         </thead>
@@ -24,6 +26,8 @@
             <td>{{ etudiant.nom }}</td>
             <td>{{ etudiant.prenom }}</td>
             <td>{{ etudiant.email }}</td>
+            <td>{{ etudiant.group.nom }}</td>
+            <td>{{ etudiant.formation.nom }}</td>
             <td><a href="/editEtudiant/{{ etudiant.id }}" class="btn btn-primary">Modifier</a></td>
             <td><a href="/delete/{{ etudiant.id }}" class="btn btn-danger">Supprimer</a></td>
             </tr>
