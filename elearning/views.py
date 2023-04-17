@@ -25,7 +25,8 @@ class EtudiantView:
 
     def editEtudiant(request, id):
         etudiant = Etudiant.objects.get(id=id)
-        return render(request, 'editEtudiant.html', {'etudiant': etudiant})
+        form = EtudiantForm()
+        return render(request, 'editEtudiant.html', {'etudiant': etudiant,'form':form})
 
     def updateEtudiant(request, id):
         etudiant = Etudiant.objects.get(id=id)

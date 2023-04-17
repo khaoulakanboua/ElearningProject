@@ -27,6 +27,18 @@
             <input type="email" class="form-control" name="email" id="id_email" required maxlength="15" value="{{ etudiant.email }}" />
         </div>
         <div class="mb-3">
+            <label>Groupe:</label>
+            <input class="form-control" name="groupe" id="id_groupe" required maxlength="15" value="{{ etudiant.group.nom }}" />
+
+            {{ form.group}}
+        </div>
+        <div class="mb-3">
+            <label>Formation:</label>
+            <input class="form-control" name="formation" id="id_formation" required maxlength="254" value="{{ etudiant.formation.nom }}" />
+            {{ form.formation}}
+
+        </div>
+        <div class="mb-3">
             <button type="submit" class="btn btn-success btn-lg">Update</button>
         </div>
     </div>
