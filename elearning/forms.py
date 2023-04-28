@@ -20,23 +20,24 @@ class EtudiantForm(forms.ModelForm):
 class EnseignantForm(forms.ModelForm):
     class Meta:
         model = Enseignant
-        fields = ['nom', 'prenom', 'email','cni']
+        fields = ['nom', 'prenom', 'email','cin']
         widgets = {
             'nom': forms.TextInput(attrs={ 'class': 'form-control' }),
             'prenom': forms.TextInput(attrs={ 'class': 'form-control' }),
             'email': forms.EmailInput(attrs={ 'class': 'form-control' }),
-            'cni': forms.TextInput(attrs={'class': 'form-control'})
+            'cin': forms.TextInput(attrs={'class': 'form-control'})
                     }
 
 class CourForm(forms.ModelForm):
 
     module: forms.ModelChoiceField(queryset=Module.objects.all())
+    formation: forms.ModelChoiceField(queryset=Formation.objects.all())
+
     class Meta:
         model = Cour
-        fields = ['nom', 'format','module']
+        fields = ['nom', 'formation','module']
         widgets = {
             'nom': forms.TextInput(attrs={ 'class': 'form-control' }),
-            'format': forms.TextInput(attrs={ 'class': 'form-control' })
                     }
 class ModuleForm(forms.ModelForm):
     formation: forms.ModelChoiceField(queryset=Formation.objects.all())
