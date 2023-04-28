@@ -1,31 +1,29 @@
 {% extends "base.html" %}
 
-{% block title %}Liste des etudiants{% endblock title %}
+{% block title %}Liste des Enseignants{% endblock title %}
 
 {% block content %}
  <div class="col-md-12">
-        <span><a href="/addnewetudiant" class="btn btn-primary">Ajouter nouveau etudiant</a></span>
+        <span><a href="/addnewformation" class="btn btn-primary">Ajouter nouveau formation</a></span>
         <div class="table-responsive">
         <table id="bootstrapdatatable" class="table table-striped table-bordered" width="100%">
         <thead>
             <th><input type="checkbox" id="checkall" /></th>
             <th>ID</th>
             <th>Nom</th>
-            <th>Prenom</th>
-            <th>Email</th>
+
             <th>Edit</th>
             <th>Delete</th>
         </thead>
         <tbody>
-        {% for etudiant in etudiants %}
+        {% for formation in formations %}
             <tr>
             <td><input type="checkbox" class="checkthis" /></td>
-            <td>{{ etudiant.id }}</td>
-            <td>{{ etudiant.nom }}</td>
-            <td>{{ etudiant.prenom }}</td>
-            <td>{{ etudiant.email }}</td>
-            <td><a href="/editEtudiant/{{ etudiant.id }}" class="btn btn-primary">Modifier</a></td>
-            <td><a href="/delete/{{ etudiant.id }}" class="btn btn-danger">Supprimer</a></td>
+            <td>{{ formation.id }}</td>
+            <td>{{ formation.nom }}</td>
+
+            <td><a href="/editFormation/{{ formation.id }}" class="btn btn-primary">Modifier</a></td>
+            <td><a href="/deleteFormation/{{ formation.id }}" class="btn btn-danger">Supprimer</a></td>
             </tr>
         {% endfor %}
         </tbody>

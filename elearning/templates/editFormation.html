@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Modifier une Formation{% endblock title %}
+
+{% block content %}
+<div class="col-md-12">
+    <form method="POST" class="post-form" action="/updateFormation/{{formation.id}}">
+    {% csrf_token %}
+    <div class="container">
+        <div class="col-12">
+            <h3>Update Details</h3>
+        </div>
+        <div class="mb-3">
+            <label>Formation ID:</label>
+            <input type="text" class="form-control" name="id" id="id_id" required maxlength="20" value="{{ formation.id }}"/>
+        </div>
+        <div class="mb-3">
+            <label>Nom:</label>
+            <input type="text" class="form-control" name="nom" id="id_nom" required maxlength="100" value="{{ formation.nom }}" />
+        </div>
+
+        <div class="mb-3">
+            <button type="submit" class="btn btn-success btn-lg">Update</button>
+        </div>
+    </div>
+    </form>
+{% endblock content %}

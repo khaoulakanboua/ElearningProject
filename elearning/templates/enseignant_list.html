@@ -13,6 +13,7 @@
             <th>Nom</th>
             <th>Prenom</th>
             <th>Email</th>
+            <th>Cni</th>
             <th>Edit</th>
             <th>Delete</th>
         </thead>
@@ -24,6 +25,7 @@
             <td>{{ enseignant.nom }}</td>
             <td>{{ enseignant.prenom }}</td>
             <td>{{ enseignant.email }}</td>
+            <td>{{ enseignant.cni }}</td>
             <td><a href="/editEnseignant/{{ enseignant.id }}" class="btn btn-primary">Modifier</a></td>
             <td><a href="/deleteEnseignant/{{ enseignant.id }}" class="btn btn-danger">Supprimer</a></td>
             </tr>
