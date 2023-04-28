@@ -1,5 +1,5 @@
 from django import forms
-from elearning.models import Etudiant, Enseignant, Cour,Inscri,Module, Formation, Group
+from elearning.models import Etudiant, Enseignant, Cour,Module, Formation, Group
 
 
 class EtudiantForm(forms.ModelForm):
@@ -64,11 +64,3 @@ class GroupForm(forms.ModelForm):
             'nom': forms.TextInput(attrs={ 'class': 'form-control' }),
             'nbrEtudiant': forms.NumberInput(attrs={'class': 'form-control'}),
                     }
-
-class InscriForm(forms.ModelForm):
-
-        Cour: forms.ModelChoiceField(queryset=Cour.objects.all())
-        Etudiant: forms.ModelChoiceField(queryset=Etudiant.objects.all())
-        class Meta:
-         model = Inscri
-         fields = ['cour', 'etudiant']

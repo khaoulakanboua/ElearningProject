@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import  inscri_list,home
+from .views import  home
 
 urlpatterns = [
     #path('products/', product_list, name='product_list'),
