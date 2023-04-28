@@ -1,10 +1,10 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
-from elearning.forms import EtudiantForm, EnseignantForm, InscriForm, CourForm, FormationForm, GroupForm
+from elearning.forms import EtudiantForm, EnseignantForm, CourForm, FormationForm, GroupForm
 from .forms import EtudiantForm
 
 # Create your views here.
-from .models import Etudiant, Enseignant, Cour, Inscri, Formation, Group
+from .models import Etudiant, Enseignant, Cour, Formation, Group
 
 
 # =========================================View Etudiant=================================================================
@@ -198,40 +198,3 @@ def home(request):
     return render(request, 'index.html')
 
 
-def inscri_list(request):
-    inscriptions = Inscri.objects.all()
-    return render(request, 'inscri_list.html', {'inscriptions': inscriptions})
-
-
-def addnewInscri(request):
-    if request.method == "POST":
-        form = InscriForm(request.POST)
-        if form.is_valid():
-            try:
-                form.save()
-                return redirect('inscription/')
-            except:
-                pass
-    else:
-        form = InscriForm()
-    return render(request, 'addInscri.html', {'form': form})
-
-
-def editInscri(request, id):
-    inscription = Inscri.objects.get(id=id)
-    return render(request, 'editInscri.html', {'inscription': inscription})
-
-
-def updateInscri(request, id):
-    inscription = Inscri.objects.get(id=id)
-    form = InscriForm(request.POST, instance=inscription)
-    if form.is_valid():
-        form.save()
-        return redirect("/inscription")
-    return render(request, 'editInscri.html', {'inscription': inscription})
-
-
-def deleteInscri(request, id):
-    inscription = Inscri.objects.get(id=id)
-    inscription.delete()
-    return redirect("/inscription")
