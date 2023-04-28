@@ -64,5 +64,3 @@ class GroupForm(forms.ModelForm):
             'nom': forms.TextInput(attrs={ 'class': 'form-control' }),
             'nbrEtudiant': forms.NumberInput(attrs={'class': 'form-control'}),
                     }
-
-
