@@ -54,9 +54,3 @@ class Etudiant(models.Model):
     def __str__(self):
         return f"{self.nom}"
 
-class Inscri(models.Model):
-    cour = models.Fo*reignKey(Cour, on_delete=models.CASCADE)
-    etudiant = models.ForeignKey(Etudiant, on_delete=models.CASCADE)
-
-    def _str_(self):
-        return f"{self.etudiant.nom} inscrit au cours {self.cour.nom}"
