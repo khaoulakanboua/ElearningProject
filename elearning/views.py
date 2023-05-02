@@ -21,12 +21,12 @@ class EtudiantView:
             if form.is_valid():
                 try:
                     form.save()
-                    return redirect('etudiant/')
+                    return redirect('/')
                 except:
                     pass
         else:
             form = EtudiantForm()
-        return render(request, 'Add.html', {'form': form})
+        return render(request, 'register.html', {'form': form})
 
     def editEtudiant(request, id):
         etudiant = Etudiant.objects.get(id=id)
@@ -226,3 +226,5 @@ class LoginView:
 
 def home(request):
     return render(request, 'index.html')
+def register(request):
+    return render(request, 'register2.html', {'form': form})
