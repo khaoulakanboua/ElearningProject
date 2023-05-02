@@ -222,7 +222,7 @@ class LoginView:
             form = LoginForm()
 
         context = {'form': form, 'error_messages': error_messages}
-        return render(request, 'login_page.html',context)
+        return render(request, 'login_page2.html',context)
 
 def home(request):
     return render(request, 'index.html')
