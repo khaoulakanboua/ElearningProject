@@ -1,7 +1,9 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
-from elearning.forms import EtudiantForm, EnseignantForm, CourForm, FormationForm, GroupForm
+from elearning.forms import EtudiantForm, EnseignantForm, CourForm, FormationForm, GroupForm,LoginForm
 from .forms import EtudiantForm
+from django import forms
+from django.core import validators
 
 # Create your views here.
 from .models import Etudiant, Enseignant, Cour, Formation, Group
@@ -193,6 +195,34 @@ class GroupView:
         group.delete()
         return redirect("/group")
 
+# ========================================View Login================================================================
+
+
+class LoginView:
+
+    def login(request):
+        error_messages = []
+
+        if request.method == 'POST':
+            form = LoginForm(request.POST)
+
+            if form.is_valid():
+                username = form.cleaned_data['username']
+                password = form.cleaned_data['password']
+
+                if Etudiant.objects.filter(username=username, password=password).exists():
+                    request.session['useename'] = username
+                    return redirect('/etudiant')
+
+                else:
+                    error_messages.append('Invalid login credentials.')
+            else:
+                error_messages.append('Invalid form data.')
+        else:
+            form = LoginForm()
+
+        context = {'form': form, 'error_messages': error_messages}
+        return render(request, 'login_page.html',context)
 
 def home(request):
     return render(request, 'index.html')

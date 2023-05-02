@@ -29,7 +29,8 @@ urlpatterns = [
     path("editGroup/<int:id>", views.GroupView.editGroup, name="editGroup"),
     path("updateGroup/<int:id>", views.GroupView.updateGroup, name="updateGroup"),
     path("deleteGroup/<int:id>", views.GroupView.deleteGroup, name="deleteGroup"),
-
+# =====================================================================================
+    path('', views.LoginView.login, name='login'),
     #=====================================================================================
     #path('cour/', views.CoursView.cour_list, name='cour_list'),
     #path('addCour', addnewCour, name='addnewCour'),

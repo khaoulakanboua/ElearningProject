@@ -1,6 +1,9 @@
 from django import forms
 from elearning.models import Etudiant, Enseignant, Cour,Module, Formation, Group
 
+class LoginForm(forms.Form):
+    username = forms.CharField(label='UserName', max_length=10)
+    password = forms.CharField(widget=forms.PasswordInput)
 
 class EtudiantForm(forms.ModelForm):
 
