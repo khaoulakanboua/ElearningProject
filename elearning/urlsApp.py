@@ -11,8 +11,8 @@ urlpatterns = [
 
     ##########################Register###################################
 
-    path("inscri", views.EtudiantView.addnewEtudiant, name="addnewEtudiant"),
-    path("", views.register),
+    path("register2", views.EtudiantView.addnewEtudiant, name="addnewEtudiant"),
+
 
     ####################################################################
 

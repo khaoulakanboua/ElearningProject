@@ -26,7 +26,7 @@ class EtudiantView:
                     pass
         else:
             form = EtudiantForm()
-        return render(request, 'register.html', {'form': form})
+        return render(request, 'register2.html', {'form': form})
 
     def editEtudiant(request, id):
         etudiant = Etudiant.objects.get(id=id)
@@ -226,5 +226,4 @@ class LoginView:
 
 def home(request):
     return render(request, 'index.html')
-def register(request):
-    return render(request, 'register2.html', {'form': form})
+
