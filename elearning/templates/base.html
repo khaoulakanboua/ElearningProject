@@ -13,43 +13,59 @@
 
     <!-- Custom styles for this template-->
     <link href="../static/css/sb-admin-2.min.css" rel="stylesheet">
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="../static/navbar/style.css" rel="stylesheet">
 
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--=============== BOXICONS ===============-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+        <!--=============== CSS ===============-->
+        <link rel="stylesheet" href="../static/navbar/style.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    Personnes
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="nav-link" href="http://127.0.0.1:8000/etudiant">Etudiants</a>
-                    <a class="nav-link" href="http://127.0.0.1:8000/enseignant">Enseignants</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="http://127.0.0.1:8000/group">Groupe</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="http://127.0.0.1:8000/formation">Formation</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
-        </ul>
+           <navbar>
+  <div class="navbar nav navbar-fixed-top navbar-inverse">
+    <div class="container-fluid">
+      <div class="v-flex">
+        <div class="navbar-body">
+          <div class="navbar-start">
+            <div class="hamburger-menu">
+              <div class="ic_menu">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+            </div>
+            <img class="logo" src="https://firebasestorage.googleapis.com/v0/b/personal-1c08e.appspot.com/o/logo.svg?alt=media&token=7a322d4e-6088-4647-975a-0f36107a5547">
+          </div>
+          <div class="search">
+            <input type="text" class="search-textbox" placeholder="Search">
+            <a class="ico-btn search-btn"><i class="material-icons ic_search">&#xE8B6;</i></a>
+            <a class="ico-btn clear-btn"><i class="material-icons ic_clear">&#xE14C;</i></a>
+          </div>
+          <div class="navbar-end">
+            <a style="text-transform: uppercase">Get in</a>
+          </div>
+        </div>
+      </div>
     </div>
-</nav>
+  </div>
+  <div class="navbar navbar-fixed-top navbar-inverse tabs paper-shadow-bottom-z-2">
+    <div class="container-fluid">
+      <ul class="navbar-body list-inline">
+        <li class="active"><a class="active">Home</a></li>
+        <li><a>Potion Lab</a></li>
+        <li><a>Stats</a></li>
+        <li><a>System Log Feed</a></li>
+      </ul>
+      <div class="tab-highlighter"></div>
+    </div>
+  </div>
+  <!--2 navbar for pushing 1 above after scrolling (Not Implemented yet.)-->
+</navbar>
 <div class="container">
     <div class="row">
         <h4>Elearning</h4>
@@ -88,6 +104,17 @@
         );
     });
 </script>
+         <script src="../static/navbar/main.js"></script>
 
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script>
+    const list=document.querySelectorAll('.list');
+    function activeLink(){
+        list.forEach((item)=>item.classList.remove('active'));
+        this.classList.add('active')
+    }
+    list.forEach((item)=>item.addEventListener('click',activeLink));
+</script>
 </body>
 </html>
