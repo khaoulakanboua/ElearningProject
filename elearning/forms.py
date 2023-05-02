@@ -11,10 +11,12 @@ class EtudiantForm(forms.ModelForm):
     formation: forms.ModelChoiceField(queryset=Formation.objects.all())
     class Meta:
         model = Etudiant
-        fields = ['nom', 'prenom', 'email','cne','group','formation']
+        fields = ['nom', 'prenom','username','password', 'email','cne','group','formation']
         widgets = {
-            'nom': forms.TextInput(attrs={ 'class': 'form-control' }),
+            'nom': forms.TextInput(attrs={ 'class': 'form-control', 'placeholder': 'Enter your name' }),
             'prenom': forms.TextInput(attrs={ 'class': 'form-control' }),
+            'username': forms.TextInput(attrs={'class': 'form-control'}),
+            'password': forms.PasswordInput(attrs={'class': 'form-control'}),
             'email': forms.EmailInput(attrs={ 'class': 'form-control' }),
             'cne': forms.TextInput(attrs={'class': 'form-control'}),
 

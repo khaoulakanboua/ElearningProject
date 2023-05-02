@@ -7,7 +7,16 @@ urlpatterns = [
     path('home/', home, name='home'),
    #path('add/', views.EtudiantView.addnewEtudiant, name='addnewEtudiant'),
     path('etudiant/', views.EtudiantView.etudiant_list, name='etudiant_list'),
-    path("addnewetudiant", views.EtudiantView.addnewEtudiant, name="addnewEtudiant"),
+
+
+    ##########################Register###################################
+
+    path("inscri", views.EtudiantView.addnewEtudiant, name="addnewEtudiant"),
+    path("", views.register),
+
+    ####################################################################
+
+
     path("editEtudiant/<int:id>", views.EtudiantView.editEtudiant, name="editEtudiant"),
     path("update/<int:id>", views.EtudiantView.updateEtudiant, name="update"),
     path("delete/<int:id>", views.EtudiantView.deleteEtudiant, name="delete"),
