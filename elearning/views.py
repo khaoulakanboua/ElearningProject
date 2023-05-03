@@ -211,7 +211,7 @@ class LoginView:
                 password = form.cleaned_data['password']
 
                 if Etudiant.objects.filter(username=username, password=password).exists():
-                    request.session['useename'] = username
+                    request.session['username'] = username
                     return redirect('/etudiant')
 
                 else:
@@ -228,4 +228,20 @@ def home(request):
     return render(request, 'index.html')
 
 def profile(request):
+    if request.session['username'] == request.session.get('username'):
+        etudiant = Etudiant.objects.get(username=request.session.get('username'))
+        return render(request, 'profile.html', {'etudiant': etudiant})
+    else:
+        return redirect('/')
+    print(request.session.get('username'))
+
     return render(request, 'profile.html')
+
+def updateProfile(request):
+        etudiant = Etudiant.objects.get(username=request.session.get('username'))
+        form = EtudiantForm(request.POST, instance=etudiant)
+        if form.is_valid():
+            form.save()
+            return redirect("/etudiant")
+        return render(request, 'profile.html', {'etudiant': etudiant})
+

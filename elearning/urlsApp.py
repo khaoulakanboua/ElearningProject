@@ -40,6 +40,7 @@ urlpatterns = [
     path("deleteGroup/<int:id>", views.GroupView.deleteGroup, name="deleteGroup"),
 # =====================================================================================
     path('', views.LoginView.login, name='login'),
+    path("updateprofile", views.updateProfile, name="updateprofile"),
     #=====================================================================================
     #path('cour/', views.CoursView.cour_list, name='cour_list'),
     #path('addCour', addnewCour, name='addnewCour'),

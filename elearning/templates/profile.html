@@ -9,6 +9,7 @@
 <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <link href="../static/test.css" rel="stylesheet">
 
+{% block content %}
 <div class="container">
     <div class="view-account">
         <section class="module">
@@ -18,11 +19,11 @@
                         <img class="img-profile img-circle img-responsive center-block"
                              src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
                         <ul class="meta list list-unstyled">
-                            <li class="name">Rebecca Sanders
-                                <label class="label label-info">UX Designer</label>
+                            <li class="name">{{ etudiant.prenom }} {{ etudiant.nom }}
+                                <br/>
+                                <label class="label label-info">{{etudiant.formation}}</label>
                             </li>
-                            <li class="email"><a href="#"><span class="__cf_email__"
-                                                                data-cfemail="782a1d1a1d1b1b19562b380f1d1a0b110c1d561b1715">[email&#160;protected]</span></a>
+                            <li class="name">  <label class="label label-info">{{etudiant.group}}</label>
                             </li>
                         </ul>
                     </div>
@@ -35,26 +36,45 @@
                 </div>
                 <div class="content-panel">
                     <h2 class="title">Profile<span class="pro-label label label-warning">PRO</span></h2>
-                    <form class="form-horizontal">
+                    <form method="POST" class="post-form" action="/updateprofile">
+                    {% csrf_token %}
                         <fieldset class="fieldset">
                             <h3 class="fieldset-title">Personal Info</h3>
 
                             <div class="form-group">
                                 <label class="col-md-2 col-sm-3 col-xs-12 control-label">User Name</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="Rebecca">
+                                    <input type="text" class="form-control" value={{ etudiant.username }}>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-2 col-sm-3 col-xs-12 control-label">First Name</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="Rebecca">
+                                    <input type="text" class="form-control" value={{ etudiant.prenom }}>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-2 col-sm-3 col-xs-12 control-label">Last Name</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="Sanders">
+                                    <input type="text" class="form-control" value={{ etudiant.nom }}>
+                                </div>
+                            </div>
+                             <div class="form-group">
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">User Name</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" value={{ etudiant.group }}>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">First Name</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" value={{ etudiant.formation }}>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label">Last Name</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="password" class="form-control" value={{ etudiant.password }}>
                                 </div>
                             </div>
                         </fieldset>
@@ -63,18 +83,16 @@
                             <div class="form-group">
                                 <label class="col-md-2  col-sm-3 col-xs-12 control-label">Email</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="email" class="form-control" value="Rebecca@website.com">
+                                    <input type="email" class="form-control" value={{ etudiant.email }}>
                                     </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-2  col-sm-3 col-xs-12 control-label">CNE</label>
                                 <div class="col-md-10 col-sm-9 col-xs-12">
-                                    <input type="text" class="form-control" value="CNE">
+                                    <input type="text" class="form-control" value={{ etudiant.cne }}>
                                 </div>
                             </div>
-                            <div class="form-group">
 
-                            </div>
                         </fieldset>
                         <hr>
                         <div class="form-group">
@@ -88,6 +106,7 @@
         </section>
     </div>
 </div>
+{% endblock content %}
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
