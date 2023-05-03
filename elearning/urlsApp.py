@@ -13,6 +13,8 @@ urlpatterns = [
 
     path("register2", views.EtudiantView.addnewEtudiant, name="addnewEtudiant"),
     path("profile/", views.profile),
+    path("password/", views.password),
+    path("changePassword", views.changePassword),
 
     ####################################################################
 

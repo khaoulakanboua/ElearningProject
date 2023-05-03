@@ -4,6 +4,8 @@ from elearning.forms import EtudiantForm, EnseignantForm, CourForm, FormationFor
 from .forms import EtudiantForm
 from django import forms
 from django.core import validators
+from django.contrib import messages
+
 
 # Create your views here.
 from .models import Etudiant, Enseignant, Cour, Formation, Group
@@ -240,8 +242,56 @@ def profile(request):
 def updateProfile(request):
         etudiant = Etudiant.objects.get(username=request.session.get('username'))
         form = EtudiantForm(request.POST, instance=etudiant)
-        if form.is_valid():
-            form.save()
-            return redirect("/etudiant")
+        if request.method == 'POST':
+            etudiant.username = request.POST['username']
+            etudiant.prenom = request.POST['prenom']
+            etudiant.nom = request.POST['nom']
+            etudiant.password = request.POST['password']
+            etudiant.email = request.POST['email']
+            etudiant.cne = request.POST['cne']
+            etudiant.save()
+            return redirect("/")
         return render(request, 'profile.html', {'etudiant': etudiant})
+
+
+
+def password(request):
+    if request.session.get('username'):
+        etudiant = Etudiant.objects.get(username=request.session['username'])
+        return render(request, 'password.html', {'etudiant': etudiant})
+    else:
+        return redirect('/')
+
+def changePassword(request):
+    if request.session.get('username'):
+        etudiant = Etudiant.objects.get(
+            username=request.session['username'])
+        if request.method == 'POST':
+            if etudiant.password == request.POST['oldPassword']:
+                # New and confirm password check is done in the client side
+                etudiant.password = request.POST['newPassword']
+                etudiant.save()
+                messages.success(request, 'Password was changed successfully')
+                return redirect('/profile')
+            else:
+                messages.error(
+                    request, 'Password is incorrect. Please try again')
+                return redirect('/password')
+        else:
+            return render(request, 'password.html', {'etudiant': etudiant})
+    else:
+        return redirect('/')
+
+
+
+
+
+
+
+
+
+
+
+
+
 
