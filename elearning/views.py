@@ -246,7 +246,6 @@ def updateProfile(request):
             etudiant.username = request.POST['username']
             etudiant.prenom = request.POST['prenom']
             etudiant.nom = request.POST['nom']
-            etudiant.password = request.POST['password']
             etudiant.email = request.POST['email']
             etudiant.cne = request.POST['cne']
             etudiant.save()
