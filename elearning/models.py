@@ -50,6 +50,8 @@ class Etudiant(models.Model):
     cne = models.CharField(max_length=100)
     formation = models.ForeignKey(Formation, on_delete=models.CASCADE)
     group = models.ForeignKey(Group, on_delete=models.CASCADE)
+    username = models.CharField(max_length=30,default='')
+    password = models.CharField(max_length=30, default='')
 
     def __str__(self):
         return f"{self.nom}"

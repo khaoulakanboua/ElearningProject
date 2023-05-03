@@ -7,7 +7,16 @@ urlpatterns = [
     path('home/', home, name='home'),
    #path('add/', views.EtudiantView.addnewEtudiant, name='addnewEtudiant'),
     path('etudiant/', views.EtudiantView.etudiant_list, name='etudiant_list'),
-    path("addnewetudiant", views.EtudiantView.addnewEtudiant, name="addnewEtudiant"),
+
+
+    ##########################Register###################################
+
+    path("register2", views.EtudiantView.addnewEtudiant, name="addnewEtudiant"),
+
+
+    ####################################################################
+
+
     path("editEtudiant/<int:id>", views.EtudiantView.editEtudiant, name="editEtudiant"),
     path("update/<int:id>", views.EtudiantView.updateEtudiant, name="update"),
     path("delete/<int:id>", views.EtudiantView.deleteEtudiant, name="delete"),
@@ -29,7 +38,8 @@ urlpatterns = [
     path("editGroup/<int:id>", views.GroupView.editGroup, name="editGroup"),
     path("updateGroup/<int:id>", views.GroupView.updateGroup, name="updateGroup"),
     path("deleteGroup/<int:id>", views.GroupView.deleteGroup, name="deleteGroup"),
-
+# =====================================================================================
+    path('', views.LoginView.login, name='login'),
     #=====================================================================================
     #path('cour/', views.CoursView.cour_list, name='cour_list'),
     #path('addCour', addnewCour, name='addnewCour'),
