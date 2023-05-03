@@ -12,7 +12,7 @@ urlpatterns = [
     ##########################Register###################################
 
     path("register2", views.EtudiantView.addnewEtudiant, name="addnewEtudiant"),
-
+    path("profile/", views.profile),
 
     ####################################################################
 
