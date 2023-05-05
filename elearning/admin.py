@@ -26,7 +26,7 @@ class adminCour(admin.ModelAdmin):
 
 @admin.register(Module)
 class adminModule(admin.ModelAdmin):
-    list_display = ('nom', 'formation', 'enseignant')
+    list_display = ('nom', 'formation', 'enseignant','nbrCour')
     ordering = ('nom',)
     search_fields = ('nom',)
 

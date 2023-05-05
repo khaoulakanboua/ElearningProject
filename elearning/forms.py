@@ -50,9 +50,9 @@ class ModuleForm(forms.ModelForm):
     enseignant: forms.ModelChoiceField(queryset=Enseignant.objects.all())
     class Meta:
         model = Module
-        fields = ['nom','formation','enseignant']
+        fields = ['nom','formation','enseignant','nbrCour']
         widgets = {
-            'nom': forms.TextInput(attrs={ 'class': 'form-control' }),
+            'nom': forms.TextInput(attrs={ 'class': 'form-control' }),'nbrCour': forms.NumberInput(attrs={ 'class': 'form-control' }),
                     }
 class FormationForm(forms.ModelForm):
     class Meta:

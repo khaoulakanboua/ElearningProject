@@ -8,8 +8,7 @@ from django.contrib import messages
 
 
 # Create your views here.
-from .models import Etudiant, Enseignant, Cour, Formation, Group
-
+from .models import Etudiant, Enseignant, Cour, Formation, Group,Module
 
 # =========================================View Etudiant=================================================================
 class EtudiantView:
@@ -123,6 +122,12 @@ class CoursView:
 
 
 # =========================================View Module=================================================================
+class ModuleView:
+    def modules(request):
+        etudiant = Etudiant.objects.get(username=request.session.get('username'))
+        modules = Module.objects.raw("SELECT * FROM elearning_module WHERE formation_id = %s", [etudiant.formation_id])
+
+        return render(request, 'modules.html', {'modules': modules})
 
 # =========================================View Formation=================================================================
 class FormationView:
@@ -228,6 +233,7 @@ class LoginView:
 
 def home(request):
     return render(request, 'index.html')
+
 
 def profile(request):
     if request.session['username'] == request.session.get('username'):
