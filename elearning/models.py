@@ -29,6 +29,7 @@ class Module(models.Model):
     nom = models.CharField(max_length=100)
     formation = models.ForeignKey(Formation, on_delete=models.CASCADE)
     enseignant = models.ForeignKey(Enseignant, on_delete=models.CASCADE)
+    nbrCour = models.IntegerField(default=0)
 
     def __str__(self):
         return f"{self.nom}"

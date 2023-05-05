@@ -43,6 +43,7 @@ urlpatterns = [
 # =====================================================================================
     path('', views.LoginView.login, name='login'),
     path("updateprofile", views.updateProfile, name="updateprofile"),
+    path('modules/', views.ModuleView.modules, name='modules'),
     #=====================================================================================
     #path('cour/', views.CoursView.cour_list, name='cour_list'),
     #path('addCour', addnewCour, name='addnewCour'),
