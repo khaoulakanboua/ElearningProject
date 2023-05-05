@@ -13,10 +13,12 @@ from .models import Etudiant, Enseignant, Cour, Formation, Group, Module, Conten
 # =========================================View Display Cours=================================================================
 class CoursDisplayView:
     def coursdisplay(request, id):
-
-        #cours = Cour.objects.raw("SELECT * FROM elearning_cour WHERE module_id = %s", [id]),
-        #contenus = Contenu.objects.raw("SELECT * FROM elearning_contenu WHERE cour_id = %s", [cours.contenu_id])
-
+        cours = Cour.objects.raw("""
+            SELECT elearning_cour.*, elearning_contenu.* 
+            FROM elearning_cour 
+            INNER JOIN elearning_contenu ON elearning_cour.id = elearning_contenu.cour_id
+            WHERE elearning_cour.module_id = %s
+        """, [id])
         return render(request, 'Cours_display.html', {'cours': cours})
 # =========================================View Etudiant=================================================================
 class EtudiantView:

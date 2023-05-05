@@ -8,7 +8,7 @@ urlpatterns = [
    #path('add/', views.EtudiantView.addnewEtudiant, name='addnewEtudiant'),
     path('etudiant/', views.EtudiantView.etudiant_list, name='etudiant_list'),
 
-    path('coursdiplay/<int:id>', CoursDisplayView.coursdisplay, name='etudiant_list'),
+     path('coursdiplay/<int:id>', CoursDisplayView.coursdisplay, name='etudiant_list'),
 
     path('coursdisplay/', CoursDisplayView.coursdisplay, name='etudiant_list'),
 
