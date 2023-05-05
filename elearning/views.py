@@ -132,7 +132,13 @@ class CoursView:
 class ModuleView:
     def modules(request):
         etudiant = Etudiant.objects.get(username=request.session.get('username'))
-        modules = Module.objects.raw("SELECT * FROM elearning_module WHERE formation_id = %s", [etudiant.formation_id])
+        modules = Module.objects.raw("""
+                    SELECT elearning_module.*, COUNT(elearning_cour.id) as nbrCours
+                    FROM elearning_module
+                    LEFT JOIN elearning_cour ON elearning_cour.module_id = elearning_module.id
+                    WHERE elearning_module.formation_id = %s
+                    GROUP BY elearning_module.id
+                """, [etudiant.formation_id])
 
         return render(request, 'modules.html', {'modules': modules})
 

@@ -7,7 +7,7 @@ urlpatterns = [
     path('home/', home, name='home'),
    #path('add/', views.EtudiantView.addnewEtudiant, name='addnewEtudiant'),
     path('etudiant/', views.EtudiantView.etudiant_list, name='etudiant_list'),
-    path('coursdiplay/', CoursDisplayView.coursdisplay, name='etudiant_list'),
+    path('coursdisplay/', CoursDisplayView.coursdisplay, name='etudiant_list'),
 
     ##########################Register###################################
 
