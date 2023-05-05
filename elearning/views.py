@@ -323,9 +323,6 @@ def render_to_pdf(template_src, context_dict={}):
     return None
 
 
-
-
-
 # Opens up page as PDF
 class ViewPDF:
     def get(request,id):
@@ -364,8 +361,8 @@ class DownloadPDF:
         pdf = render_to_pdf('pdf_template.html', {'cour_dict': cour_dict})
 
         response = HttpResponse(pdf, content_type='application/pdf')
-        filename = "Invoice_%s.pdf" % ("12341231")
-        content = "attachment; filename='%s'" % (filename)
+        filename = "cour.pdf"
+        content = "attachment; filename=%s" % (filename)
         response['Content-Disposition'] = content
         return response
 
