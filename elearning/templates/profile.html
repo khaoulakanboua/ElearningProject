@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link href="../static/test.css" rel="stylesheet">
+
+{% block content %}
+<div class="container">
+    <div class="view-account">
+        <section class="module">
+            <div class="module-inner">
+                <div class="side-bar">
+                    <div class="user-info">
+                        <img class="img-profile img-circle img-responsive center-block"
+                             src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                        <ul class="meta list list-unstyled">
+                            <li class="name">{{ etudiant.prenom }} {{ etudiant.nom }}
+                                <br/>
+                                <label class="label label-info">{{etudiant.formation}}</label>
+                            </li>
+                            <li class="name">  <label class="label label-info">{{etudiant.group}}</label>
+                            </li>
+                        </ul>
+                    </div>
+                    <nav class="side-menu">
+                        <ul class="nav">
+                            <li class="active"><a href="http://127.0.0.1:8000/profile/"><span class="fa fa-user"></span> Profile</a></li>
+                            <li><a href="http://127.0.0.1:8000/password/"><span class="fa fa-cog"></span> Password</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="content-panel">
+                    <h2 class="title">Profile<span class="pro-label label label-warning">PRO</span></h2>
+                    <form method="POST" class="post-form" action="/updateprofile">
+                    {% csrf_token %}
+                        <fieldset class="fieldset">
+                            <h3 class="fieldset-title">Personal Info</h3>
+
+                            <div class="form-group">
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label" for="username"> User Name</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control"  id="username" name="username" value={{ etudiant.username }}>
+                                </div><br/><br/>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label" for="prenom">First Name</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control"  id="prenom" name="prenom" value={{ etudiant.prenom }}>
+                                </div> <br/><br/>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-2 col-sm-3 col-xs-12 control-label" for="nom">Last Name</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" id="nom" name="nom" value={{ etudiant.nom }}>
+                                </div><br/><br/>
+                            </div>
+
+
+
+                        </fieldset>
+                        <fieldset class="fieldset">
+                            <h3 class="fieldset-title">Contact Info</h3>
+                            <div class="form-group">
+                                <label class="col-md-2  col-sm-3 col-xs-12 control-label" for="email">Email</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="email" class="form-control" id="email" name="email" value={{ etudiant.email }}>
+                                    </div><br/><br/>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2  col-sm-3 col-xs-12 control-label" for="cne">CNE</label>
+                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                    <input type="text" class="form-control" id="cne" name="cne" value={{ etudiant.cne }}>
+                                </div><br/><br/>
+                            </div>
+
+                        </fieldset>
+                        <hr>
+                        <div class="form-group">
+                            <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
+                                <input class="btn btn-primary" type="submit" value="Update Profile">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock content %}
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

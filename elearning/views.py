@@ -4,6 +4,8 @@ from elearning.forms import EtudiantForm, EnseignantForm, CourForm, FormationFor
 from .forms import EtudiantForm
 from django import forms
 from django.core import validators
+from django.contrib import messages
+
 
 # Create your views here.
 from .models import Etudiant, Enseignant, Cour, Formation, Group
@@ -211,7 +213,7 @@ class LoginView:
                 password = form.cleaned_data['password']
 
                 if Etudiant.objects.filter(username=username, password=password).exists():
-                    request.session['useename'] = username
+                    request.session['username'] = username
                     return redirect('/etudiant')
 
                 else:
@@ -226,4 +228,69 @@ class LoginView:
 
 def home(request):
     return render(request, 'index.html')
+
+def profile(request):
+    if request.session['username'] == request.session.get('username'):
+        etudiant = Etudiant.objects.get(username=request.session.get('username'))
+        return render(request, 'profile.html', {'etudiant': etudiant})
+    else:
+        return redirect('/')
+    print(request.session.get('username'))
+
+    return render(request, 'profile.html')
+
+def updateProfile(request):
+        etudiant = Etudiant.objects.get(username=request.session.get('username'))
+        form = EtudiantForm(request.POST, instance=etudiant)
+        if request.method == 'POST':
+            etudiant.username = request.POST['username']
+            etudiant.prenom = request.POST['prenom']
+            etudiant.nom = request.POST['nom']
+            etudiant.email = request.POST['email']
+            etudiant.cne = request.POST['cne']
+            etudiant.save()
+            return redirect("/")
+        return render(request, 'profile.html', {'etudiant': etudiant})
+
+
+
+def password(request):
+    if request.session.get('username'):
+        etudiant = Etudiant.objects.get(username=request.session['username'])
+        return render(request, 'password.html', {'etudiant': etudiant})
+    else:
+        return redirect('/')
+
+def changePassword(request):
+    if request.session.get('username'):
+        etudiant = Etudiant.objects.get(
+            username=request.session['username'])
+        if request.method == 'POST':
+            if etudiant.password == request.POST['oldPassword']:
+                # New and confirm password check is done in the client side
+                etudiant.password = request.POST['newPassword']
+                etudiant.save()
+                messages.success(request, 'Password was changed successfully')
+                return redirect('/profile')
+            else:
+                messages.error(
+                    request, 'Password is incorrect. Please try again')
+                return redirect('/password')
+        else:
+            return render(request, 'password.html', {'etudiant': etudiant})
+    else:
+        return redirect('/')
+
+
+
+
+
+
+
+
+
+
+
+
+
 

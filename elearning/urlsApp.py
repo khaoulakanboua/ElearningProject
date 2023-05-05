@@ -12,7 +12,9 @@ urlpatterns = [
     ##########################Register###################################
 
     path("register2", views.EtudiantView.addnewEtudiant, name="addnewEtudiant"),
-
+    path("profile/", views.profile),
+    path("password/", views.password),
+    path("changePassword", views.changePassword),
 
     ####################################################################
 
@@ -40,6 +42,7 @@ urlpatterns = [
     path("deleteGroup/<int:id>", views.GroupView.deleteGroup, name="deleteGroup"),
 # =====================================================================================
     path('', views.LoginView.login, name='login'),
+    path("updateprofile", views.updateProfile, name="updateprofile"),
     #=====================================================================================
     #path('cour/', views.CoursView.cour_list, name='cour_list'),
     #path('addCour', addnewCour, name='addnewCour'),
