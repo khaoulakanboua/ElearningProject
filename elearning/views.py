@@ -1,6 +1,6 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
-from elearning.forms import EtudiantForm, EnseignantForm, CourForm, FormationForm, GroupForm,LoginForm
+from elearning.forms import EtudiantForm, EnseignantForm, CourForm, FormationForm, GroupForm, LoginForm
 from .forms import EtudiantForm
 from django import forms
 from django.core import validators
@@ -8,8 +8,15 @@ from django.contrib import messages
 
 
 # Create your views here.
-from .models import Etudiant, Enseignant, Cour, Formation, Group,Module
+from .models import Etudiant, Enseignant, Cour, Formation, Group, Module, Contenu
 
+# =========================================View Display Cours=================================================================
+class CoursDisplayView:
+    def coursdisplay(request):
+        cours = Cour.objects.all()
+        contenus = Contenu.objects.all()
+
+        return render(request, 'Cours_display.html', {'contenus': contenus})
 # =========================================View Etudiant=================================================================
 class EtudiantView:
     def etudiant_list(request):
