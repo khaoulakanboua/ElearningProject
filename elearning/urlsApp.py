@@ -1,7 +1,6 @@
 from django.urls import path
 from . import views
-from .views import home, CoursDisplayView
-
+from .views import home, CoursDisplayView,ViewPDF,DownloadPDF
 urlpatterns = [
     #path('products/', product_list, name='product_list'),
     path('home/', home, name='home'),
@@ -12,6 +11,8 @@ urlpatterns = [
 
     path('coursdisplay/', CoursDisplayView.coursdisplay, name='etudiant_list'),
 
+    path('pdf_view/<int:id>', views.ViewPDF.get, name="pdf_view"),
+    path('pdf_download/<int:id>', views.DownloadPDF.get, name="pdf_download"),
     ##########################Register###################################
 
     path("register2", views.EtudiantView.addnewEtudiant, name="addnewEtudiant"),

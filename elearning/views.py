@@ -5,6 +5,15 @@ from .forms import EtudiantForm
 from django import forms
 from django.core import validators
 from django.contrib import messages
+from django.http import FileResponse
+import io
+from django.http import FileResponse
+from reportlab.pdfgen import canvas
+from io import BytesIO
+from django.http import HttpResponse
+from django.template.loader import get_template
+from django.views import View
+from xhtml2pdf import pisa
 
 
 # Create your views here.
@@ -14,7 +23,7 @@ from .models import Etudiant, Enseignant, Cour, Formation, Group, Module, Conten
 class CoursDisplayView:
     def coursdisplay(request, id):
         cours = Cour.objects.raw("""
-            SELECT elearning_cour.*, elearning_contenu.* 
+            SELECT elearning_cour.*, elearning_contenu.description as description
             FROM elearning_cour 
             INNER JOIN elearning_contenu ON elearning_cour.id = elearning_contenu.cour_id
             WHERE elearning_cour.module_id = %s
@@ -303,6 +312,62 @@ def changePassword(request):
     else:
         return redirect('/')
 
+
+def render_to_pdf(template_src, context_dict={}):
+    template = get_template(template_src)
+    html = template.render(context_dict)
+    result = BytesIO()
+    pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
+    if not pdf.err:
+        return HttpResponse(result.getvalue(), content_type='application/pdf')
+    return None
+
+
+
+
+
+# Opens up page as PDF
+class ViewPDF:
+    def get(request,id):
+
+        cour=Cour.objects.raw("""
+                    SELECT elearning_cour.*, elearning_contenu.description as description
+                    FROM elearning_cour 
+                    INNER JOIN elearning_contenu ON elearning_cour.id = elearning_contenu.cour_id
+                    WHERE elearning_cour.id = %s
+                """, [id])
+        cour_dict = {
+            'id': cour[0].id,
+            'nom':cour[0].nom,
+            'description': cour[0].description,
+        }
+
+        pdf = render_to_pdf('pdf_template.html',{'cour_dict': cour_dict})
+        return HttpResponse(pdf, content_type='application/pdf')
+
+
+# Automaticly downloads to PDF file
+class DownloadPDF:
+    def get( request,id):
+        cour = Cour.objects.raw("""
+                           SELECT elearning_cour.*, elearning_contenu.description as description
+                           FROM elearning_cour 
+                           INNER JOIN elearning_contenu ON elearning_cour.id = elearning_contenu.cour_id
+                           WHERE elearning_cour.id = %s
+                       """, [id])
+        cour_dict = {
+            'id': cour[0].id,
+            'nom': cour[0].nom,
+            'description': cour[0].description,
+        }
+
+        pdf = render_to_pdf('pdf_template.html', {'cour_dict': cour_dict})
+
+        response = HttpResponse(pdf, content_type='application/pdf')
+        filename = "Invoice_%s.pdf" % ("12341231")
+        content = "attachment; filename='%s'" % (filename)
+        response['Content-Disposition'] = content
+        return response
 
 
 
