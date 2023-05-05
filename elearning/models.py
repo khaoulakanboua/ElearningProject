@@ -56,3 +56,10 @@ class Etudiant(models.Model):
     def __str__(self):
         return f"{self.nom}"
 
+class Contenu(models.Model):
+    description = models.TextField(max_length=400)
+    format = models.CharField(max_length=200)
+    cour = models.ForeignKey(Cour, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.description}"

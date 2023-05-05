@@ -1,14 +1,26 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
-from elearning.forms import EtudiantForm, EnseignantForm, CourForm, FormationForm, GroupForm,LoginForm
+from elearning.forms import EtudiantForm, EnseignantForm, CourForm, FormationForm, GroupForm, LoginForm
 from .forms import EtudiantForm
 from django import forms
 from django.core import validators
 from django.contrib import messages
 
-
 # Create your views here.
-from .models import Etudiant, Enseignant, Cour, Formation, Group
+from .models import Etudiant, Enseignant, Cour, Formation, Group, Contenu
+
+
+
+
+
+
+
+class CoursDisplayView:
+    def coursdisplay(request):
+        cours = Cour.objects.all()
+        contenus = Contenu.objects.all()
+
+        return render(request, 'Cours_display.html',{'contenus': contenus})
 
 
 # =========================================View Etudiant=================================================================
@@ -197,6 +209,7 @@ class GroupView:
         group.delete()
         return redirect("/group")
 
+
 # ========================================View Login================================================================
 
 
@@ -224,10 +237,12 @@ class LoginView:
             form = LoginForm()
 
         context = {'form': form, 'error_messages': error_messages}
-        return render(request, 'login_page2.html',context)
+        return render(request, 'login_page2.html', context)
+
 
 def home(request):
     return render(request, 'index.html')
+
 
 def profile(request):
     if request.session['username'] == request.session.get('username'):
@@ -239,19 +254,19 @@ def profile(request):
 
     return render(request, 'profile.html')
 
-def updateProfile(request):
-        etudiant = Etudiant.objects.get(username=request.session.get('username'))
-        form = EtudiantForm(request.POST, instance=etudiant)
-        if request.method == 'POST':
-            etudiant.username = request.POST['username']
-            etudiant.prenom = request.POST['prenom']
-            etudiant.nom = request.POST['nom']
-            etudiant.email = request.POST['email']
-            etudiant.cne = request.POST['cne']
-            etudiant.save()
-            return redirect("/")
-        return render(request, 'profile.html', {'etudiant': etudiant})
 
+def updateProfile(request):
+    etudiant = Etudiant.objects.get(username=request.session.get('username'))
+    form = EtudiantForm(request.POST, instance=etudiant)
+    if request.method == 'POST':
+        etudiant.username = request.POST['username']
+        etudiant.prenom = request.POST['prenom']
+        etudiant.nom = request.POST['nom']
+        etudiant.email = request.POST['email']
+        etudiant.cne = request.POST['cne']
+        etudiant.save()
+        return redirect("/")
+    return render(request, 'profile.html', {'etudiant': etudiant})
 
 
 def password(request):
@@ -260,6 +275,7 @@ def password(request):
         return render(request, 'password.html', {'etudiant': etudiant})
     else:
         return redirect('/')
+
 
 def changePassword(request):
     if request.session.get('username'):
@@ -280,17 +296,3 @@ def changePassword(request):
             return render(request, 'password.html', {'etudiant': etudiant})
     else:
         return redirect('/')
-
-
-
-
-
-
-
-
-
-
-
-
-
-

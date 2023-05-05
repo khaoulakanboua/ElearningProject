@@ -1,28 +1,35 @@
 from django.contrib import admin
-from .models import Etudiant,Enseignant,Formation,Cour,Module,Group
+from .models import Etudiant, Enseignant, Formation, Cour, Module, Group, Contenu
+
+
 # Register your models here.
 @admin.register(Etudiant)
 class adminEtudiant(admin.ModelAdmin):
-    list_display = ('nom','prenom','cne','email')
-    ordering =('nom',)
-    search_fields =('cne',)
+    list_display = ('nom', 'prenom', 'cne', 'email')
+    ordering = ('nom',)
+    search_fields = ('cne',)
+
 
 @admin.register(Enseignant)
 class adminEnseignant(admin.ModelAdmin):
-    list_display = ('nom','prenom','cin','email')
-    ordering =('nom',)
-    search_fields =('cin',)
+    list_display = ('nom', 'prenom', 'cin', 'email')
+    ordering = ('nom',)
+    search_fields = ('cin',)
+
+
 @admin.register(Formation)
 class adminFormation(admin.ModelAdmin):
     list_display = ('nom',)
-    ordering =('nom',)
-    search_fields =('nom',)
+    ordering = ('nom',)
+    search_fields = ('nom',)
+
 
 @admin.register(Cour)
 class adminCour(admin.ModelAdmin):
-    list_display = ('nom','formation','module')
+    list_display = ('nom', 'formation', 'module')
     ordering = ('nom',)
     search_fields = ('nom',)
+
 
 @admin.register(Module)
 class adminModule(admin.ModelAdmin):
@@ -30,8 +37,16 @@ class adminModule(admin.ModelAdmin):
     ordering = ('nom',)
     search_fields = ('nom',)
 
+
 @admin.register(Group)
 class adminGroup(admin.ModelAdmin):
     list_display = ('nom', 'nbrEtudiant',)
     ordering = ('nom',)
     search_fields = ('nom',)
+
+
+@admin.register(Contenu)
+class adminContenu(admin.ModelAdmin):
+    list_display = ('cour', 'description', 'format',)
+    ordering = ('cour',)
+    search_fields = ('cour',)
