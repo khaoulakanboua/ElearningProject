@@ -1,7 +1,9 @@
 # Elearning Website with Django
 
 
-![list_module_etud](https://user-images.githubusercontent.com/48094988/236626556-944bcdc4-c988-40f6-963e-7165ff573777.png)
+![login](https://user-images.githubusercontent.com/48094988/236626582-e4018e39-badc-48a9-a7e5-687b2da26cf1.png)
+
+![register](https://user-images.githubusercontent.com/48094988/236626588-9f039707-3c45-43f4-88f9-7be99e3823a1.png)
 
 
 ## Introduction
