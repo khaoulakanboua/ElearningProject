@@ -59,20 +59,20 @@ Etudiant
 ![update_password](https://user-images.githubusercontent.com/48094988/236626770-64981587-f68c-40ce-bd9f-c917520ea5ff.png)
 ![cour](https://user-images.githubusercontent.com/48094988/236626773-e6030550-b964-427d-ae9e-4637a7ad9db3.jpg)
 ![list_cours_modul_clicked](https://user-images.githubusercontent.com/48094988/236626778-de779d7a-e789-4ecb-be3f-5b7e5ef213cc.png)
-![list_contenu](https://user-images.githubusercontent.com/48094988/236626776-8352cc96-0a25-4b86-aeed-131d2dec7de7.png)
+![list_module_etud](https://user-images.githubusercontent.com/48094988/236626768-ba237f77-1932-4511-9948-7ec2b76d610c.png)
+![detail_prof](https://user-images.githubusercontent.com/48094988/236626775-0ae803d1-8f1e-4ea0-8732-8f9a28057e35.png)
 
 Admin
 
 
+![list_contenu](https://user-images.githubusercontent.com/48094988/236626776-8352cc96-0a25-4b86-aeed-131d2dec7de7.png)
 
 ![list_etud](https://user-images.githubusercontent.com/48094988/236626764-b23d27e4-a5c3-4a12-8f1a-69c6c9526181.png)
 ![list_formation](https://user-images.githubusercontent.com/48094988/236626766-dea0f756-d3ed-467c-a089-8d7b6c4bf266.png)
 ![list_group](https://user-images.githubusercontent.com/48094988/236626767-d7748493-6fd1-4c54-8d6d-250ee771a221.png)
-![list_module_etud](https://user-images.githubusercontent.com/48094988/236626768-ba237f77-1932-4511-9948-7ec2b76d610c.png)
 ![list_modules](https://user-images.githubusercontent.com/48094988/236626769-4637330c-a5cf-471c-a1f2-1d35eb6243f5.png)
 ![admin_login](https://user-images.githubusercontent.com/48094988/236626771-8cb26344-a95e-4480-b0d5-4eba0fc8855a.png)
 ![dashboard_login](https://user-images.githubusercontent.com/48094988/236626774-4df8be70-550d-4b7c-8df0-6e6742b1e4cd.png)
-![detail_prof](https://user-images.githubusercontent.com/48094988/236626775-0ae803d1-8f1e-4ea0-8732-8f9a28057e35.png)
 ![list_cours](https://user-images.githubusercontent.com/48094988/236626777-eedefbe8-477c-44e0-ad45-4d331823f099.png)
 ![list_enseignant](https://user-images.githubusercontent.com/48094988/236626779-5ae0e314-4449-41f2-8b2e-f63904b6f92f.png)
 
