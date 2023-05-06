@@ -20,7 +20,7 @@ scrapping using Beautiful-Soup: is a Python library used for web scraping purpos
 
 User registration and login: Users can create accounts and log in to the website.
 
-## Course management (Django Admin): Admin can manage courses and add new courses to the website .
+Course management ## (Django Admin): Admin can manage courses and add new courses to the website .
 
 Enroll in courses: Users can view and download their courses.
 
