@@ -55,7 +55,7 @@ In this project, we have developed an e-learning website using Django and MySQL.
 
 
 
-#Etudiant 
+** Etudiant **
 
 ![update_password](https://user-images.githubusercontent.com/48094988/236626770-64981587-f68c-40ce-bd9f-c917520ea5ff.png)
 ![cour](https://user-images.githubusercontent.com/48094988/236626773-e6030550-b964-427d-ae9e-4637a7ad9db3.jpg)
@@ -63,7 +63,7 @@ In this project, we have developed an e-learning website using Django and MySQL.
 ![list_module_etud](https://user-images.githubusercontent.com/48094988/236626768-ba237f77-1932-4511-9948-7ec2b76d610c.png)
 ![detail_prof](https://user-images.githubusercontent.com/48094988/236626775-0ae803d1-8f1e-4ea0-8732-8f9a28057e35.png)
 
-#Admin
+** Admin **
 
 ![admin_login](https://user-images.githubusercontent.com/48094988/236626771-8cb26344-a95e-4480-b0d5-4eba0fc8855a.png)
 ![list_contenu](https://user-images.githubusercontent.com/48094988/236626776-8352cc96-0a25-4b86-aeed-131d2dec7de7.png)
