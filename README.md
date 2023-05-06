@@ -1,5 +1,5 @@
-# ElearningProject
-## eLearning Website Django
+# Elearning Website with Django
+## Introduction
 In this project, we will be developing an e-learning website using the Django framework and MySQL as the database management system. The e-learning website will allow users to register, login, view and download courses.
 
 ## Technologies used:
@@ -20,7 +20,7 @@ scrapping using Beautiful-Soup: is a Python library used for web scraping purpos
 
 User registration and login: Users can create accounts and log in to the website.
 
-Course management ##(Django Admin): Admin can manage courses and add new courses to the website .
+Course management ##(Django Admin)##: Admin can manage courses and add new courses to the website .
 
 Enroll in courses: Users can view and download their courses.
 
