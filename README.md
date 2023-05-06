@@ -1,4 +1,9 @@
 # Elearning Website with Django
+
+
+![list_module_etud](https://user-images.githubusercontent.com/48094988/236626556-944bcdc4-c988-40f6-963e-7165ff573777.png)
+
+
 ## Introduction
 In this project, we will be developing an e-learning website using the Django framework and MySQL as the database management system. The e-learning website will allow users to register, login, view and download courses.
 
@@ -42,3 +47,16 @@ Implement course enrollment functionality, allowing users to enroll in courses.
 ## Conclusion:
 
 In this project, we have developed an e-learning website using Django and MySQL. The website allows users to register, login, view courses, enroll in courses. The project demonstrates the use of Django's built-in authentication system, database management, and front-end design using HTML/CSS and Bootstrap.
+
+
+
+
+
+
+
+
+
+
+
+
+
