@@ -5,6 +5,10 @@ class LoginForm(forms.Form):
     username = forms.CharField(label='UserName', max_length=10)
     password = forms.CharField(widget=forms.PasswordInput)
 
+class LoginForm1(forms.Form):
+    email = forms.CharField(label='email', max_length=20)
+    password = forms.CharField(widget=forms.PasswordInput)
+
 class EtudiantForm(forms.ModelForm):
 
     group: forms.ModelChoiceField(queryset=Group.objects.all())

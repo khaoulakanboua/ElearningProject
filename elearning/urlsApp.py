@@ -53,6 +53,8 @@ urlpatterns = [
     path("deleteGroup/<int:id>", views.GroupView.deleteGroup, name="deleteGroup"),
 # =====================================================================================
     path('', views.LoginView.login, name='login'),
+    path('loginE', views.LoginView.login1, name='login'),
+
     path("updateprofile", views.updateProfile, name="updateprofile"),
     path('modules/', views.ModuleView.modules, name='modules'),
     #=====================================================================================

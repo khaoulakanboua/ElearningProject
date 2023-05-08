@@ -1,34 +1,75 @@
-<!DOCTYPE html>
-<html>
+
+
+
+{% block content %}
+
+<html lang="en">
+
   <head>
-    <title>Login Page</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  </head>
-  <body>
-    <div class="container">
-      <h2>Login</h2>
-      <form method="post" class="form-signin">
-    {% csrf_token %}
+  	<title>Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="../static/css/style.css"}>
+
+	</head>
+
+	<body class="img js-fullheight" style="background-image: url(../static/images/bg2.jpeg);">
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-6 col-lg-4">
+					<div class="login-wrap p-0">
+
+		      	<form  method="post" class="form-signin" action="loginE">
+                    {% csrf_token %}
     {% for message in error_messages %}
         <div class="alert alert-danger" role="alert">{{ message }}</div>
     {% endfor %}
-    <h1 class="h3 mb-3 font-weight-normal">Login</h1>
-    <label for="{{ form.username.id_for_label }}" class="sr-only">Username:</label>
-    <input type="text" id="{{ form.username.id_for_label }}" name="{{ form.username.name }}" class="form-control" placeholder="Username" required autofocus>
-    <label for="{{ form.password.id_for_label }}" class="sr-only">Password:</label>
-    <input type="password" id="{{ form.password.id_for_label }}" name="{{ form.password.name }}" class="form-control" placeholder="Password" required>
-    <div class="checkbox mb-3">
-        <label>
-            <input type="checkbox" name="remember"> Remember me
-        </label>
-    </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    <span><a href="/inscri" class="btn btn-primary">Register</a></span>
+		      		<div class="form-group">
+		      			<input type="text" id="{{ form.email.id_for_label }}" name="{{ form.email.name }}" class="form-control" placeholder="Username" required autofocus>
+		      		</div>
+	            <div class="form-group">
+	               <input type="password" id="{{ form.password.id_for_label }}" name="{{ form.password.name }}" class="form-control" placeholder="Password" required>
+	              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+	            </div>
+	            <div class="form-group">
+	            	<button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
+	            </div>
+	            <div class="form-group d-md-flex">
+	            	<div class="w-50">
+									 <a href="/admin" >Admin</a>
+								</div>
+								<div class="w-50 text-md-right">
+									<a href="/register2" >Register</a>
+								</div>
+	            </div>
+	          </form>
+	          <p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
+	          <div class="social d-flex text-center">
+	          	<a href="#" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Facebook</a>
+	          	<a href="#" class="px-2 py-2 ml-md-1 rounded"><span class="ion-logo-twitter mr-2"></span> Twitter</a>
+	          </div>
+		      </div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-</form>
+	<script  src="../static/js/jquery.min.js"></script>
+  <script src="../static/js/popper.js"></script>
+  <script src="../static/js/bootstrap.min.js"></script>
+  <script src="../static/js/main.js"></script>
 
-    </div>
-  </body>
+	</body>
 </html>
+{% endblock content %}

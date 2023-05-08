@@ -1,6 +1,6 @@
 from django.core.paginator import Paginator
 from django.shortcuts import render, redirect
-from elearning.forms import EtudiantForm, EnseignantForm, CourForm, FormationForm, GroupForm, LoginForm
+from elearning.forms import EtudiantForm, EnseignantForm, CourForm, FormationForm, GroupForm, LoginForm,LoginForm1
 from .forms import EtudiantForm
 from django import forms
 from django.core import validators
@@ -266,6 +266,30 @@ class LoginView:
         context = {'form': form, 'error_messages': error_messages}
         return render(request, 'login_page2.html',context)
 
+    def login1(request):
+        error_messages = []
+
+        if request.method == 'POST':
+            form = LoginForm1(request.POST)
+
+            if form.is_valid():
+                email = form.cleaned_data['email']
+                password = form.cleaned_data['password']
+
+                if Enseignant.objects.filter(email=email, password=password).exists():
+                    request.session['email'] = email
+                    return redirect('/etudiant')
+
+                else:
+                    error_messages.append('Invalid login credentials.')
+            else:
+                error_messages.append('Invalid form data.')
+        else:
+            form = LoginForm()
+
+        context = {'form': form, 'error_messages': error_messages}
+        return render(request, 'login_page.html', context)
+
 def home(request):
     return render(request, 'index.html')
 
@@ -312,7 +336,7 @@ def changePassword(request):
                 etudiant.password = request.POST['newPassword']
                 etudiant.save()
                 messages.success(request, 'Password was changed successfully')
-                return redirect('/profile')
+                return redirect('/')
             else:
                 messages.error(
                     request, 'Password is incorrect. Please try again')

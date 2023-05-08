@@ -14,6 +14,7 @@ class Enseignant(models.Model):
     prenom = models.CharField(max_length=100)
     cin = models.CharField(max_length=100)
     email = models.EmailField()
+    password = models.CharField(max_length=30, default='')
 
 
     def __str__(self):
