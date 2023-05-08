@@ -335,7 +335,7 @@ class ViewPDF:
                 """, [id])
         cour_dict = {
             'id': cour[0].id,
-            'nom':cour[0].nom,
+            'nom': cour[0].nom,
             'description': cour[0].description,
         }
 
@@ -345,7 +345,7 @@ class ViewPDF:
 
 # Automaticly downloads to PDF file
 class DownloadPDF:
-    def get( request,id):
+    def get(request, id):
         cour = Cour.objects.raw("""
                            SELECT elearning_cour.*, elearning_contenu.description as description
                            FROM elearning_cour 
