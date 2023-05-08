@@ -254,7 +254,7 @@ class LoginView:
 
                 if Etudiant.objects.filter(username=username, password=password).exists():
                     request.session['username'] = username
-                    return redirect('/etudiant')
+                    return redirect('/modules')
 
                 else:
                     error_messages.append('Invalid login credentials.')
