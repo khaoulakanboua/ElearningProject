@@ -38,7 +38,7 @@ class Cour(models.Model):
     nom = models.CharField(max_length=100)
     formation = models.ForeignKey(Formation, on_delete=models.CASCADE)
     module = models.ForeignKey(Module, on_delete=models.CASCADE)
-
+    field_name = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100,null = True)
     def __str__(self):
         return f"{self.nom}"
 
