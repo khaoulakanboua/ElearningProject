@@ -2,9 +2,12 @@ from django.urls import path
 from . import views
 from .views import home, CoursDisplayView,ViewPDF,DownloadPDF
 urlpatterns = [
+
+
+
     #path('products/', product_list, name='product_list'),
     path('home/', home, name='home'),
-   #path('add/', views.EtudiantView.addnewEtudiant, name='addnewEtudiant'),
+    #path('add/', views.EtudiantView.addnewEtudiant, name='addnewEtudiant'),
     path('etudiant/', views.EtudiantView.etudiant_list, name='etudiant_list'),
 
      path('coursdiplay/<int:id>', CoursDisplayView.coursdisplay, name='etudiant_list'),

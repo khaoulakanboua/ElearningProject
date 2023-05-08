@@ -21,9 +21,10 @@
                         <ul class="meta list list-unstyled">
                             <li class="name">{{ etudiant.prenom }} {{ etudiant.nom }}
                                 <br/>
-                                <label class="label label-info">{{etudiant.formation}}</label>
+                                <h2>  <label class="label label-success">{{etudiant.formation}}</label> </h2>
                             </li>
-                            <li class="name">  <label class="label label-info">{{etudiant.group}}</label>
+                            <li class="name">
+                                <h3>  <label class="label label-default">{{etudiant.group}}</label> </h3>
                             </li>
                         </ul>
                     </div>
@@ -31,12 +32,12 @@
                         <ul class="nav">
                             <li class="active"><a href="http://127.0.0.1:8000/profile/"><span class="fa fa-user"></span> Profile</a></li>
                             <li><a href="http://127.0.0.1:8000/password/"><span class="fa fa-cog"></span> Password</a></li>
-                            <li><a href="http://127.0.0.1:8000/etudiant "><span class="fa fa-cog"></span> Back</a></li>
+                            <li><a href="http://127.0.0.1:8000/etudiant "><span class="fa fa-arrow-left"></span> Back</a></li>
                         </ul>
                     </nav>
                 </div>
                 <div class="content-panel">
-                    <h2 class="title">Profile<span class="pro-label label label-warning">PRO</span></h2>
+                    <h2 class="title">Profile</h2>
                     <form method="POST" class="post-form" action="/updateprofile">
                     {% csrf_token %}
                         <fieldset class="fieldset">
@@ -85,7 +86,7 @@
                         <hr>
                         <div class="form-group">
                             <div class="col-md-10 col-sm-9 col-xs-12 col-md-push-2 col-sm-push-3 col-xs-push-0">
-                                <input class="btn btn-primary" type="submit" value="Update Profile">
+                                <input class="btn btn-success" type="submit" value="Update Profile">
                             </div>
                         </div>
                     </form>
