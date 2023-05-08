@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import home, CoursDisplayView,ViewPDF,DownloadPDF
+from .views import home, CoursDisplayView,ViewPDF,DownloadPDF,CoursView
 urlpatterns = [
 
 
@@ -11,8 +11,9 @@ urlpatterns = [
     path('etudiant/', views.EtudiantView.etudiant_list, name='etudiant_list'),
 
      path('coursdiplay/<int:id>', CoursDisplayView.coursdisplay, name='etudiant_list'),
+     path('coursdiplay', CoursDisplayView.coursdisplay, name='etudiant_list'),
 
-    path('coursdisplay/', CoursDisplayView.coursdisplay, name='etudiant_list'),
+    path('coursdisplay/', CoursView.cour_list2),
 
     path('pdf_view/<int:id>', views.ViewPDF.get, name="pdf_view"),
     path('pdf_download/<int:id>', views.DownloadPDF.get, name="pdf_download"),

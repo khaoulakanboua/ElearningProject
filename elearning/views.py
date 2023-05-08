@@ -108,6 +108,13 @@ class CoursView:
     def cour_list(request):
         cours = Cour.objects.all()
         return render(request, 'cour_list.html', {'cours': cours})
+    def cour_list2(request):
+        cours = Cour.objects.raw("""
+                   SELECT elearning_cour.*, elearning_contenu.description as description
+                   FROM elearning_cour 
+                   INNER JOIN elearning_contenu ON elearning_cour.id = elearning_contenu.cour_id
+               """)
+        return render(request, 'Cours_display.html', {'cours': cours})
 
     def addnewCour(request):
         if request.method == "POST":
