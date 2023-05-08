@@ -14,6 +14,9 @@ from django.http import HttpResponse
 from django.template.loader import get_template
 from django.views import View
 from xhtml2pdf import pisa
+import requests
+from bs4 import BeautifulSoup
+import csv
 
 
 # Create your views here.
@@ -251,7 +254,7 @@ class LoginView:
 
                 if Etudiant.objects.filter(username=username, password=password).exists():
                     request.session['username'] = username
-                    return redirect('/etudiant')
+                    return redirect('/modules')
 
                 else:
                     error_messages.append('Invalid login credentials.')
@@ -385,3 +388,50 @@ class DownloadPDF:
 
 
 
+
+# =========================================Scraping All cours =================================================================
+
+def scrap(request):
+    page = requests.get("https://www.codecademy.com/catalog")
+    cours = []
+
+    src = page.content
+    soup = BeautifulSoup(src, "html.parser")
+    cours_title = soup.find("ul", {'class': 'e10xj1580'}).find_all("h3", {'class': 'gamut-1t1wakq-Text'})
+    cours_desc = soup.find("ul", {'class': 'e10xj1580'}).find_all("span", {'class': 'gamut-1ospsm4-Text'})
+    cours_dif = soup.find("ul", {'class': 'e10xj1580'}).find_all("span", {'data-testid': 'card-difficulty'})
+    cours_total_less = soup.find("ul", {'class': 'e10xj1580'}).find_all("span", {'data-testid': 'card-num-lessons'})
+    link = [link['href'] for link in soup.find("ul", {'class': 'e10xj1580'}).find_all('a', {'class': 'e1bhhzie0'}, href=True)]
+
+    for i in range(len(cours_title)):
+        course = {
+            'title': cours_title[i].text.strip(),
+            'desc': cours_desc[i].text.strip(),
+            'difficulty': cours_dif[i].text.strip(),
+            'total': cours_total_less[i].text.strip(),
+            'link': link[i],
+        }
+        cours.append(course)
+
+    return render(request, "scrp.html", {'cours': cours})
+
+
+# =========================================Scraping chapitre for specifique cours  =================================================================
+
+def ScrapCahpitre(request, chap):
+
+        page_chap = requests.get(f"https://www.codecademy.com{chap['link']}")
+        chaptres = []
+        src = page_chap.content
+        soup = BeautifulSoup(src, "html.parser")
+        chap_title = soup.find("ul", {'class': 'e1f1c9zp0'}).find_all("h3", {'class': 'e8i0p5k0'})
+        link = [link['href'] for link in soup.find("ul",{'class':'e10xj1580'}).find_all('a',{'class':'e1bhhzie0'} ,href=True)]
+
+        for i in range(len(chap_title)):
+            chaptre = {
+                'title': chap_title[i].text,
+                'link':link
+            }
+            chaptres.append(chaptre)
+
+        return render(request, "chptr.html", {'chaptres': chaptres})

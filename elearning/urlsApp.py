@@ -1,12 +1,15 @@
 from django.urls import path
 from . import views
-from .views import home, CoursDisplayView,ViewPDF,DownloadPDF,CoursView
+from .views import home, CoursDisplayView, ViewPDF, DownloadPDF, CoursView, ScrapCahpitre,scrap
+
 urlpatterns = [
 
 
 
     #path('products/', product_list, name='product_list'),
     path('home/', home, name='home'),
+    path('scrapcours/', scrap, name='home'),
+    path('scrapchapitre/',ScrapCahpitre , name='home'),
     #path('add/', views.EtudiantView.addnewEtudiant, name='addnewEtudiant'),
     path('etudiant/', views.EtudiantView.etudiant_list, name='etudiant_list'),
 
