@@ -52,7 +52,7 @@ class ModuleForm(forms.ModelForm):
         model = Module
         fields = ['nom','formation','enseignant','nbrCour']
         widgets = {
-            'nom': forms.TextInput(attrs={ 'class': 'form-control' }),'nbrCour': forms.NumberInput(attrs={ 'class': 'form-control' }),
+            'nom': forms.TextInput(attrs={'class': 'form-control'}), 'nbrCour': forms.NumberInput(attrs={'class': 'form-control'}),
                     }
 class FormationForm(forms.ModelForm):
     class Meta:

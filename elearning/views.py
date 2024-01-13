@@ -47,6 +47,8 @@ class EtudiantView:
                     return redirect('/')
                 except:
                     pass
+            else:
+                print('hjhjhjhj')
         else:
             form = EtudiantForm()
         return render(request, 'register2.html', {'form': form})
